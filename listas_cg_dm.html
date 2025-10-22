@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Procesador de Archivos Excel - Single File</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CDN deps -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js">
+// ===== Dark Mode Toggle =====
+document.getElementById("toggleDarkMode").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    const icon = document.querySelector("#toggleDarkMode i");
+    if(document.body.classList.contains("dark")){
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-sun"></i> Modo Claro';
+    } else {
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-moon"></i> Modo Oscuro';
+    }
+});
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+// ===== Dark Mode Toggle =====
+document.getElementById("toggleDarkMode").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    const icon = document.querySelector("#toggleDarkMode i");
+    if(document.body.classList.contains("dark")){
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-sun"></i> Modo Claro';
+    } else {
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-moon"></i> Modo Oscuro';
+    }
+});
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js">
+// ===== Dark Mode Toggle =====
+document.getElementById("toggleDarkMode").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    const icon = document.querySelector("#toggleDarkMode i");
+    if(document.body.classList.contains("dark")){
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-sun"></i> Modo Claro';
+    } else {
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-moon"></i> Modo Oscuro';
+    }
+});
+
+    </script>
+
+    <style>
+        :root{
+            --primary:#3498db; --dark:#2c3e50; --success:#27ae60; --danger:#e74c3c; --bg:#f5f7fa;
+            --card:#ffffff; --muted:#7f8c8d; --radius:12px; --shadow:0 6px 18px rgba(44,62,80,0.06);
+            --max-width:1180px;
+        }
+        *{box-sizing:border-box}
+        body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--dark);-webkit-font-smoothing:antialiased}
+        .container{max-width:var(--max-width);margin:20px auto;padding:16px}
+        header{background:linear-gradient(90deg,var(--primary),#6bb0ff);padding:18px;border-radius:14px;color:#fff;box-shadow:var(--shadow);}
+        header h1{margin:0;font-size:20px}
+        header p{margin:6px 0 0;opacity:0.95}
+
+        .grid{display:grid;gap:12px}
+        .instructions{background:var(--card);padding:14px;border-radius:10px;box-shadow:var(--shadow)}
+        .file-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}
+        .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}
+        .file-input{display:flex;align-items:center;gap:12px}
+        .file-input input[type=file]{display:none}
+        .btn{background:var(--primary);color:#fff;padding:10px 12px;border-radius:8px;border:none;cursor:pointer}
+        .btn.secondary{background:var(--dark)}
+        .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--dark)}
+        .status{font-size:13px;color:var(--muted)}
+        .file-meta{font-size:13px;color:var(--muted);margin-top:8px}
+        .actions{display:flex;gap:8px;align-items:center;margin-top:12px}
+        .logo-upload{margin-top:12px}
+
+        .results-container{background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow);margin-top:12px}
+        .table-wrap{overflow:auto;max-height:520px;border-radius:8px;border:1px solid #e9eef6}
+        table{width:100%;border-collapse:collapse;font-size:13px}
+        th,td{padding:9px 10px;border-bottom:1px solid #eef2f6;text-align:left}
+        thead th{position:sticky;top:0;background:#fff;z-index:2}
+        tr:nth-child(even){background:#fbfdff}
+        .sortable{cursor:pointer;user-select:none}
+        .sort-indicator{font-size:12px;margin-left:6px;color:var(--muted)}
+        .editable{background:#fff;transition:box-shadow .12s}
+        .editable:hover{box-shadow:0 0 0 3px rgba(52,152,219,0.06)}
+        .editing{outline:2px solid rgba(52,152,219,0.18)}
+        .small{font-size:12px}
+        .notif{padding:8px 10px;border-radius:8px}
+        .notif.success{background:rgba(39,174,96,0.12);color:var(--success)}
+        .notif.error{background:rgba(231,76,60,0.08);color:var(--danger)}
+        .spinner{border:3px solid rgba(0,0,0,0.06);border-top:3px solid var(--primary);border-radius:50%;width:18px;height:18px;animation:spin 1s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* responsive */
+        @media (max-width:600px){header h1{font-size:16px}.container{padding:8px}}
+    
+/* ===== Dark Mode ===== */
+body.dark {
+    --bg:#1e1e1e;
+    --card:#2c2c2c;
+    --dark:#f5f5f5;
+    --muted:#bbbbbb;
+    color:var(--dark);
+    background:var(--bg);
+}
+body.dark header{background:linear-gradient(90deg,#111,#333);}
+body.dark table thead th{background:#333 !important;color:#fff;}
+body.dark table td {background:#333 !important;color:#fff;}
+
+body.dark tr:nth-child(even){background:#2a2a2a;}
+body.dark .card, body.dark .instructions, body.dark .results-container{
+    background:var(--card); color:var(--dark);
+}
+body.dark .btn.ghost{border:1px solid #444;color:#fff;}
+body.dark .btn.secondary{border:1px solid #444;color:#fff;background:#618A8C;}
+        /* Destacar Duplicados */
+        #resultsBody tr[style*="background-color: rgb(255, 221, 221)"] {
+            background-color: rgba(255, 77, 77, 0.2) !important;} 
+body.dark footer{color:var(--muted);}
+
+    </style>
+</head>
+<body>
+    <div class="container" role="main">
+        <header aria-labelledby="title">
+            <h1 id="title">Listas de cambio de guardia RPMX</h1> <i class="fa-solid fa-ship fa-bounce"></i>
+            
+        
+<button id="toggleDarkMode" class="btn secondary" style="float:right;margin-top:-34px">
+    <i class="fa-solid fa-moon"></i>Modo Oscuro
+</button>
+
+        </header>
+
+        <section class="instructions" aria-labelledby="instr">
+            <h2 id="instr">Instrucciones</h2>
+            <ol>
+                <li>Carga <strong>Archivo A</strong> (Proporcionado por RH, lectura desde C17 — se extraen columnas C, E, F).</li>
+                <li>Carga <strong>Archivo B</strong> (La ultima lista del personal a bordo generado por el SHAT,lectura desde A1 — columnas A–F).</li>
+                <li>Presiona <strong>Comparar Archivos</strong> para generar la tabla combinada.</li>
+                <li>Revisa la tabla, edita celdas, y exporta a PDF.</li>
+            </ol>
+        </section>
+
+        <section class="file-section" aria-label="Cargas de archivos">
+            <div class="card" id="cardA">
+                <div>
+                    <h3>Archivo RH excel</h3>
+                    <p class="small">Se lee desde <strong>C17</strong>. Columnas extraídas: <strong>C (Nombre)</strong>, <strong>E (RFC)</strong>, <strong>F (Categoria)</strong>.</p>
+                </div>
+                <div>
+                    <div class="file-input">
+                        <label class="btn" for="fileA"><i class="fa-solid fa-chart-column"></i> Seleccionar Archivo A</label>
+                        <input id="fileA" type="file" accept=".xlsx,.xls" aria-label="Archivo A">
+                        <span id="statusA" class="status">No cargado</span>
+                    </div>
+                    <div id="metaA" class="file-meta" aria-live="polite"></div>
+                </div>
+            </div>
+
+            <div class="card" id="cardB">
+                <div>
+                    <h3>Archivo SHAT excel</h3>
+                    <p class="small">Se lee desde <strong>A1</strong>. Columnas extraídas: <strong>A,B,C,D,E,F</strong>.</p>
+                </div>
+                <div>
+                    <div class="file-input">
+                        <label class="btn" for="fileB"><i class="fa-solid fa-chart-column"></i> Seleccionar Archivo B</label>
+                        <input id="fileB" type="file" accept=".xlsx,.xls" aria-label="Archivo B">
+                        <span id="statusB" class="status">No cargado</span>
+                    </div>
+                    <div id="metaB" class="file-meta" aria-live="polite"></div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="status-container" aria-live="polite" style="margin-top:12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center">
+            <div id="notifications"></div>
+            <div class="actions">
+                <button id="processBtn" class="btn" disabled>Comparar Archivos</button>
+                <button id="resetBtn" class="btn secondary">Reiniciar</button>
+            </div>
+        </section>
+
+        <section class="results-container" aria-labelledby="resultsTitle">
+            <h2 id="resultsTitle">Resultados</h2>
+            <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+                <div class="small">Exportar PDF:</div>
+                <button id="exportPdfBtn" class="btn" disabled><i class="fa-solid fa-file-pdf"></i> Descargar</button>
+                <div id="loadingIndicator" style="display:none"><span class="spinner" aria-hidden="true"></span> Procesando...</div>
+            </div>
+
+            <div class="table-wrap" id="tableWrap">
+                <table id="resultsTable" role="table" aria-label="Tabla de resultados">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-key="no">No <span class="sort-indicator" aria-hidden="true"></span></th>
+                            <th class="sortable" data-key="nombre">NOMBRE <span class="sort-indicator" aria-hidden="true"></span></th>
+                            <th class="sortable" data-key="rfc">RFC <span class="sort-indicator" aria-hidden="true"></span></th>
+                            <th class="sortable" data-key="categoria">CATEGORIA <span class="sort-indicator" aria-hidden="true"></span></th>
+                            <th class="sortable" data-key="cabinaCama">CABINA-CAMA <span class="sort-indicator" aria-hidden="true"></span></th>
+                            <th>Firma</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:8px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+                <div class="small">Registros: <span id="recordCount">0</span></div>
+                <div>
+                    <button id="prevPage" class="btn secondary">Anterior</button>
+                    <button id="nextPage" class="btn secondary">Siguiente</button>
+                </div>
+            </div>
+        </section>
+
+        <footer style="margin-top:16px;text-align:center;color:var(--muted);font-size:13px">Aplicación desarrollada por: Angel Valenzuela Romero 2025· @angelvr</footer>
+    </div>
+
+    <!-- Hidden default logo (ktvlogo.png) -->
+    
+
+    <script>
+    // ===== Estado global =====
+    const state = {
+        fileA: null, fileB: null, logoFile: null, logoDataUrl: null,
+        dataA: [], dataB: [], combined: [],
+        sort: {key: 'cabinaCama', dir: 'asc'},
+        page: 0, pageSize: 100, // UI page size
+        perPagePDF: 15,
+        displayRows: [],
+    };
+
+    // ===== Helpers =====
+    const $ = id => document.getElementById(id);
+    function notify(msg, type='success'){
+        const n = document.createElement('div'); n.className = 'notif ' + (type==='error'?'error':'success'); n.textContent = msg;
+        const container = $('notifications'); container.innerHTML=''; container.appendChild(n);
+        setTimeout(()=>{ if(container.contains(n)) container.removeChild(n); }, 6000);
+    }
+
+    function setStatus(id, txt, meta=''){
+        $(id).textContent = txt;
+        const m = id === 'statusA' ? 'metaA' : id === 'statusB' ? 'metaB' : null;
+        if(m) $(m).textContent = meta;
+    }
+
+    function validateFile(file){
+        if(!file) return {ok:false,msg:'Archivo no proporcionado'};
+        const allowedExt = /\.(xlsx|xls)$/i;
+        if(!file.name.match(allowedExt)) return {ok:false,msg:'Formato inválido. Use .xlsx o .xls'};
+        return {ok:true};
+    }
+
+    // ===== Read Excel with SheetJS =====
+    function readExcelFile(file){
+        return new Promise((resolve,reject)=>{
+            const fr = new FileReader();
+            fr.onload = e => {
+                try{
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, {type:'array'});
+                    const firstName = workbook.SheetNames[0];
+                    const ws = workbook.Sheets[firstName];
+                    resolve(ws);
+                }catch(err){reject(err)}
+            };
+            fr.onerror = err => reject(err);
+            fr.readAsArrayBuffer(file);
+        });
+    }
+
+    // ===== Process specific files =====
+    function processFileA(ws){
+        // Read from row 17 (C17 -> zero-index: 16). use range:16 to start at row 17
+        const rows = XLSX.utils.sheet_to_json(ws, {header:1, range:16});
+        const output = [];
+        for(let r=0;r<rows.length;r++){
+            const row = rows[r] || [];
+            const nombre = (row[2] || '').toString().trim(); // C
+            const claveE = (row[4] || '').toString().trim();  // E
+            const categoria = (row[5] || '').toString().trim(); // F
+            if(!nombre && !claveE && !categoria) continue;
+            output.push({nombre, clave: claveE, categoria, rawRow: r+17});
+        }
+        return output;
+    }
+
+    function processFileB(ws){
+        const rows = XLSX.utils.sheet_to_json(ws, {header:1, range:0});
+        const output = [];
+        for(let r=0;r<rows.length;r++){
+            const row = rows[r] || [];
+            const A = (row[0] || '').toString().trim();
+            const B = (row[1] || '').toString().trim();
+            const C = (row[2] || '').toString().trim();
+            const D = (row[3] || '').toString().trim();
+            const E = (row[4] || '').toString().trim();
+            const F = (row[5] || '').toString().trim();
+            if(!A && !B && !C && !D && !E && !F) continue;
+            output.push({A,B,C,D,E,F, rawRow: r+1});
+        }
+        return output;
+    }
+
+    // ===== Combine data (E of A vs D of B) =====
+    function combineData(dataA, dataB){
+        const index = new Map();
+        dataB.forEach(row=>{
+            const key = row.D || '';
+            if(!index.has(key)) index.set(key, []);
+            index.get(key).push(row);
+        });
+        const combined = dataA.map((rowA, idx) => {
+            const key = rowA.clave || '';
+            const matches = index.get(key) || [];
+            let cabina = '';
+            if(matches.length===1){ cabina = matches[0].F || ''; }
+            else if(matches.length>1){ cabina = matches.map(m=>m.F||'').filter(x=>x).join(' ; '); }
+            return {
+                originalIndex: idx+1,
+                noDisplay: idx+1,
+                nombre: rowA.nombre || '',
+                rfc: rowA.clave || '',
+                categoria: rowA.categoria || '',
+                cabinaCama: cabina,
+                firma: '',
+                _rowA_raw: rowA.rawRow
+            };
+        });
+        return combined;
+    }
+
+
+// ===== Utilidad para escapar HTML =====
+function escapeHtml(s){ 
+    if(!s) return ''; 
+    return s
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;')
+        .replace(/'/g,'&#039;'); 
+}
+
+
+
+    // ===== Render table =====
+function renderTable(){
+    const tbody = $('resultsBody'); tbody.innerHTML='';
+    const arr = state.combined.slice();
+    const sortKey = state.sort.key; const dir = state.sort.dir;
+    if(sortKey === 'no'){
+        if(dir === 'asc') arr.sort((a,b)=>a.originalIndex - b.originalIndex);
+        else arr.sort((a,b)=>b.originalIndex - a.originalIndex);
+        arr.forEach((r,i)=> r.noDisplay = i+1);
+    } else {
+        arr.sort((a,b)=>{
+            const va = (a[sortKey]||'').toString().toLowerCase();
+            const vb = (b[sortKey]||'').toString().toLowerCase();
+            if(va<vb) return dir==='asc'?-1:1;
+            if(va>vb) return dir==='asc'?1:-1;
+            return a.originalIndex - b.originalIndex;
+        });
+    }
+    state.displayRows = arr;
+    const start = state.page * state.pageSize; const end = Math.min(arr.length, start + state.pageSize);
+    const pageRows = arr.slice(start,end);
+    for(let i=0;i<pageRows.length;i++){
+        const r = pageRows[i];
+        const tr = document.createElement('tr');
+        tr.dataset.idx = r.originalIndex;
+        tr.innerHTML = `
+            <td>${r.noDisplay}</td>
+            <td class="editable" data-field="nombre" data-idx="${r.originalIndex}">${escapeHtml(r.nombre)}</td>
+            <td class="editable" data-field="rfc" data-idx="${r.originalIndex}">${escapeHtml(r.rfc)}</td>
+            <td class="editable" data-field="categoria" data-idx="${r.originalIndex}">${escapeHtml(r.categoria)}</td>
+            <td class="editable" data-field="cabinaCama" data-idx="${r.originalIndex}">${escapeHtml(r.cabinaCama)}</td>
+            <td></td>
+        `;
+        tbody.appendChild(tr);
+    }
+    $('recordCount').textContent = state.combined.length;
+    attachEditableHandlers();
+    updateSortIndicators();
+    $('exportPdfBtn').disabled = state.combined.length===0;
+    highlightDuplicates();
+}
+
+// ===== Duplicados =====
+function highlightDuplicates(){
+    const values = {};
+    state.combined.forEach(r=>{
+        const val = (r.cabinaCama||"").trim().toLowerCase();
+        if(!val) return;
+        if(!values[val]) values[val] = [];
+        values[val].push(r.originalIndex);
+    });
+    const dupIdxs = Object.values(values).filter(arr=>arr.length>1).flat();
+    document.querySelectorAll("#resultsBody tr").forEach(tr=>{
+        const idx = Number(tr.dataset.idx);
+        if(dupIdxs.includes(idx)){
+            tr.style.backgroundColor = "#ffdddd";
+        }else{
+            tr.style.backgroundColor = "";
+        }
+    });
+}
+
+// ===== Editable handlers =====
+function attachEditableHandlers(){
+    const cells = document.querySelectorAll('#resultsBody .editable');
+    cells.forEach(cell=>{
+        cell.tabIndex = 0;
+        cell.addEventListener('click', onCellEdit);
+        cell.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); onCellEdit(e); } });
+    });
+}
+
+function onCellEdit(e){
+    const cell = e.currentTarget || e.target;
+    if(cell.querySelector('input')) return;
+    const field = cell.dataset.field; const idx = Number(cell.dataset.idx);
+    const cur = cell.textContent;
+    const input = document.createElement('input'); input.type='text'; input.value = cur; input.className='editing'; input.style.width='100%';
+    cell.innerHTML = ''; cell.appendChild(input); input.focus();
+    const save = ()=>{
+        const val = input.value.trim();
+        const rec = state.combined.find(r=>r.originalIndex===idx);
+        if(rec){ rec[field] = val; }
+        cell.removeChild(input); cell.textContent = val;
+        if(state.sort.key === field) renderTable();
+        highlightDuplicates();
+    };
+    input.addEventListener('blur', save);
+    input.addEventListener('keydown', ev=>{ if(ev.key==='Enter'){ save(); } else if(ev.key==='Escape'){ cell.removeChild(input); cell.textContent = cur; } });
+}
+
+// ===== Sorting =====
+    function initSorting(){
+        const headers = document.querySelectorAll('thead th.sortable');
+        headers.forEach(h=>{
+            h.addEventListener('click', ()=>{
+                const key = h.dataset.key;
+                if(state.sort.key === key){ state.sort.dir = state.sort.dir === 'asc' ? 'desc' : 'asc'; }
+                else { state.sort.key = key; state.sort.dir = 'asc'; }
+                renderTable();
+            });
+        });
+    }
+
+    function updateSortIndicators(){
+        const headers = document.querySelectorAll('thead th.sortable');
+        headers.forEach(h=>{
+            const key = h.dataset.key; const span = h.querySelector('.sort-indicator');
+            if(state.sort.key === key){ span.textContent = state.sort.dir==='asc' ? '▲' : '▼'; }
+            else span.textContent = '';
+        });
+    }
+
+    // ===== PDF Export =====
+
+async function exportPDF(){
+    if(state.combined.length===0) { 
+        notify('No hay registros para exportar','error'); 
+        return; 
+    }
+    $('loadingIndicator').style.display = 'inline-flex';
+    try{
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({orientation:'landscape', unit:'mm', format:'letter'});
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 12;
+
+        // Logo en base64
+        const logoData = "data:image/png;base64,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";
+
+        // Datos actuales
+        const rowsAll = state.displayRows.length ? state.displayRows : state.combined.slice();
+
+        const fecha = new Date().toLocaleDateString("es-MX", {
+            day:"2-digit", month:"2-digit", year:"numeric"
+        });
+
+        const totalPages = Math.ceil(rowsAll.length / state.perPagePDF);
+        for(let p=0;p<totalPages;p++){
+            if(p>0) doc.addPage();
+
+            // Logo (siempre disponible)
+            if(logoData){
+                const imgProps = doc.getImageProperties(logoData);
+                const imgW = 28; 
+                const imgH = (imgProps.height/imgProps.width)*imgW;
+                doc.addImage(logoData,'PNG',margin,8,imgW,imgH);
+            }
+
+            // Título centrado
+            doc.setFont("helvetica","bold");
+            doc.setFontSize(16);
+            doc.setTextColor(44,62,80);
+            doc.text("CAMBIO DE GUARDIA REFORMA PEMEX", pageWidth/2, 16, {align:"center"});
+
+            // Fecha arriba derecha
+            doc.setFont("helvetica","normal");
+            doc.setFontSize(10);
+            doc.text(`Fecha: ${fecha}`, pageWidth - margin - 40, 16);
+
+            // Número de página al pie
+            doc.setFontSize(10);
+            doc.text(`Página ${p+1} de ${totalPages}`, pageWidth/2, pageHeight - 8, {align:"center"});
+
+            // Tabla con Courier New
+            const start = p * state.perPagePDF;
+            const end = Math.min(rowsAll.length, start + state.perPagePDF);
+            const rows = rowsAll.slice(start,end).map(r=>[
+                r.noDisplay, r.nombre, r.rfc, r.categoria, r.cabinaCama, '          '
+            ]);
+
+          doc.autoTable({
+                head: [['No','NOMBRE','RFC','CATEGORIA','CABINA-CAMA','FIRMA']],
+                body: rows,
+                startY: 26,
+                styles: {
+                    font: 'helvetica',
+                    fontSize: 10,
+                    cellPadding: 3,
+                    lineWidth: 0.1,             // grosor de línea del borde (discreto)
+                    lineColor: [200,200,200]    // color gris claro del borde
+                },
+                headStyles: {
+                    font: 'helvetica',
+                    fontStyle: 'bold',
+                    fillColor: [52,152,219],
+                    textColor: 255,
+                    lineWidth: 0.1,
+                    lineColor: [160,160,160]
+                },
+                alternateRowStyles: { fillColor:[245,247,250] },
+                margin: {left: margin, right: margin},
+                pageBreak: 'auto'
+            });
+
+        }
+
+        doc.save('reporte_combinado.pdf');
+        notify('PDF generado con éxito','success');
+    }catch(err){
+        console.error(err);
+        notify('Error generando PDF: '+(err.message||err),'error');
+    }finally{
+        $('loadingIndicator').style.display = 'none';
+    }
+}
+
+
+// Utilidad para convertir imagen a base64
+function imageToDataUrl(img){
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img,0,0);
+    return canvas.toDataURL('image/png');
+}
+
+
+    // ===== Event bindings =====
+    window.addEventListener('DOMContentLoaded', ()=>{
+    $('fileA').addEventListener('change', async (e)=>{
+        const f = e.target.files[0];
+        const v = validateFile(f);
+        if(!v.ok){ setStatus('statusA','Error', v.msg); state.fileA=null; checkReady(); return; }
+        setStatus('statusA','Cargado', f.name);
+        state.fileA = f; $('metaA').textContent = `Nombre: ${f.name} · Tamaño: ${Math.round(f.size/1024)} KB`;
+        checkReady();
+    });
+
+    $('fileB').addEventListener('change', async (e)=>{
+        const f = e.target.files[0];
+        const v = validateFile(f);
+        if(!v.ok){ setStatus('statusB','Error', v.msg); state.fileB=null; checkReady(); return; }
+        setStatus('statusB','Cargado', f.name);
+        state.fileB = f; $('metaB').textContent = `Nombre: ${f.name} · Tamaño: ${Math.round(f.size/1024)} KB`;
+        checkReady();
+    });
+
+    $('processBtn').addEventListener('click', async ()=>{
+        if(!state.fileA || !state.fileB) { notify('Cargue ambos archivos antes de procesar','error'); return; }
+        $('loadingIndicator').style.display = 'inline-flex';
+        try{
+            const [wsA, wsB] = await Promise.all([readExcelFile(state.fileA), readExcelFile(state.fileB)]);
+            const dA = processFileA(wsA);
+            const dB = processFileB(wsB);
+            if(dA.length===0) notify('Archivo A no contiene datos en la sección esperada (C17...)','error');
+            if(dB.length===0) notify('Archivo B no contiene datos válidos (A1...)','error');
+            state.dataA = dA; state.dataB = dB;
+            state.combined = combineData(dA,dB);
+            state.sort = {key:'cabinaCama', dir:'asc'}; state.page = 0;
+            renderTable(); notify('Procesamiento completado');
+        }catch(err){ console.error(err); notify('Error procesando archivos: '+(err.message||err),'error'); }
+        finally{ $('loadingIndicator').style.display = 'none'; }
+    });
+
+    $('resetBtn').addEventListener('click', ()=>{
+        if(!confirm('¿Desea reiniciar la aplicación y borrar los archivos cargados?')) return;
+        state.fileA = state.fileB = null; state.dataA = state.dataB = state.combined = [];
+        $('fileA').value=''; $('fileB').value='';
+        setStatus('statusA','No cargado',''); setStatus('statusB','No cargado',''); $('metaA').textContent=''; $('metaB').textContent='';
+        $('resultsBody').innerHTML=''; $('recordCount').textContent='0'; $('exportPdfBtn').disabled=true; $('processBtn').disabled=true;
+        notify('Aplicación reiniciada','success');
+    });
+
+    $('exportPdfBtn').addEventListener('click', exportPDF);
+
+    $('prevPage').addEventListener('click', ()=>{ if(state.page>0){ state.page--; renderTable(); } });
+    $('nextPage').addEventListener('click', ()=>{ const max = Math.floor((state.displayRows.length-1)/state.pageSize); if(state.page<max){ state.page++; renderTable(); } });
+
+    initSorting();
+
+    function checkReady(){ $('processBtn').disabled = !(state.fileA && state.fileB); }
+
+    document.querySelectorAll('label[for]').forEach(l=>{
+        l.tabIndex=0;
+        l.addEventListener('keydown', (e)=>{ if(e.key==='Enter') document.getElementById(l.htmlFor).click(); });
+    });
+}); 
+// expose state for debugging
+    window._app = { state };
+    
+// ===== Dark Mode Toggle =====
+document.getElementById("toggleDarkMode").addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    const icon = document.querySelector("#toggleDarkMode i");
+    if(document.body.classList.contains("dark")){
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-sun"></i> Modo Claro';
+    } else {
+        document.getElementById("toggleDarkMode").innerHTML = '<i class="fa-solid fa-moon"></i> Modo Oscuro';
+    }
+});
+
+    </script>
+</body>
+</html>
