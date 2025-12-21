@@ -1,25 +1,8 @@
-asgiref==3.11.0
-blinker==1.9.0
-charset-normalizer==3.4.4
-click==8.3.1
-dj-database-url==3.0.1
-Django==6.0
-et_xmlfile==2.0.0
-Flask==3.1.2
-gunicorn==23.0.0
-itsdangerous==2.2.0
-Jinja2==3.1.6
-MarkupSafe==3.0.3
-numpy @ file:///home/builder/.termux-build/python-numpy/src/dist/numpy-2.2.5-cp312-cp312-linux_aarch64.whl#sha256=5bd061eb5e1323ce3e3f3e293dd720cbdff3a5b3ac066b0fcc963cb32949730d
-openpyxl==3.1.5
-packaging==25.0
-pandas @ file:///home/builder/.termux-build/python-pandas/src/dist/pandas-2.3.3-cp312-cp312-linux_aarch64.whl#sha256=d69521bd9c24058a0abad646143cca00bde1cbc8f9852e7a5d077d9abd359db9
-pillow==12.0.0
-psycopg2-binary==2.9.11
-python-dateutil==2.9.0.post0
-pytz==2025.2
-reportlab==4.4.6
-six==1.17.0
-sqlparse==0.5.4
-tzdata==2025.3
-Werkzeug==3.1.4
+django
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
+pandas
+numpy
+
