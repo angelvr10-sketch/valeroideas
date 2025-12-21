@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0 small fw-bold">1. FOLIO DE REQUISICIÓN</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET">
+                    <div class="input-group">
+                        <input type="text" name="folio" class="form-control" placeholder="Ej: REQ-101" value="{{ folio|default:'' }}">
+                        <button class="btn btn-info text-white">Cargar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if requisicion %}
+            {% if not requisicion.cerrada %}
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0 small fw-bold">2. AGREGAR PRODUCTOS</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Solicitado por:</label>
+                                <input type="text" name="solicitante" class="form-control" placeholder="Nombre del área o persona" value="{{ requisicion.solicitante }}" required>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Producto:</label>
+                                <select name="producto_id" class="form-select" required>
+                                    <option value="">Seleccione producto...</option>
+                                    {% for item in catalogo %}
+                                    <option value="{{ item.id }}">{{ item.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Cantidad a surtir:</label>
+                                <input type="number" name="cantidad" class="form-control" placeholder="0" required>
+                            </div>
+
+                            <button class="btn btn-info w-100 fw-bold text-white shadow-sm">
+                                + Añadir a la Lista
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card shadow-sm border-0 border-start border-info border-5">
+                    <div class="card-body text-center py-4">
+                        <h1 class="display-6">📄</h1>
+                        <h5 class="fw-bold text-info">REQUISICIÓN COMPLETADA</h5>
+                        <p class="text-muted small">Esta nota ya ha sido cerrada y los productos descontados del stock.</p>
+                        <a href="{% url 'pdf_requisicion' requisicion.id %}" class="btn btn-dark btn-sm w-100">
+                            🖨️ Descargar Nota PDF
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="col-md-8">
+        {% if folio %}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h3 class="mb-0">Nota: <span class="text-info">{{ folio }}</span></h3>
+                    <p class="text-muted">Solicitante: <strong>{{ requisicion.solicitante|default:"Sin asignar" }}</strong></p>
+                </div>
+                <div>
+                    {% if not requisicion.cerrada %}
+                        <a href="{% url 'cerrar_requisicion' requisicion.id %}" 
+                           class="btn btn-info text-white fw-bold shadow-sm"
+                           onclick="return confirm('¿Finalizar Requisición? Esto descontará los productos del inventario actual.')">
+                            💾 Guardar y Generar PDF
+                        </a>
+                    {% else %}
+                        <span class="badge bg-secondary p-2">ESTADO: SURTIDO</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle bg-white shadow-sm rounded">
+                    <thead class="table-info">
+                        <tr>
+                            <th>Producto</th>
+                            <th class="text-center">Cantidad Solicitada</th>
+                            {% if not requisicion.cerrada %}
+                            <th class="text-center">Quitar</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td class="fw-bold">{{ item.catalogo.nombre }}</td>
+                            <td class="text-center">
+                                <span class="badge bg-light text-dark border px-3" style="font-size: 1rem;">
+                                    {{ item.cantidad }}
+                                </span>
+                            </td>
+                            {% if not requisicion.cerrada %}
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-danger">✕</button>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center py-5 text-muted">
+                                La lista está vacía. Agrega productos desde el panel izquierdo.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center mt-5 p-5 bg-white shadow-sm rounded border">
+                <div class="display-1 text-info mb-4">📝</div>
+                <h4>Módulo de Requisiciones</h4>
+                <p class="text-secondary">Genera notas de salida para surtir pedidos o departamentos.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

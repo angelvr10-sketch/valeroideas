@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 fw-bold text-dark">📊 Resumen de Operaciones</h2>
+
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-primary text-white h-100">
+                <div class="card-body">
+                    <h6 class="small uppercase">Catálogo</h6>
+                    <h2 class="fw-bold mb-0">{{ total_productos }}</h2>
+                    <small>Productos reg.</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-danger text-white h-100">
+                <div class="card-body">
+                    <h6 class="small">Stock Bajo</h6>
+                    <h2 class="fw-bold mb-0">{{ total_stock_bajo }}</h2>
+                    <small>Requieren surtido</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-success text-white h-100">
+                <div class="card-body">
+                    <h6 class="small">Requisiciones Hoy</h6>
+                    <h2 class="fw-bold mb-0">{{ req_hoy }}</h2>
+                    <small>Folios generados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-warning text-dark h-100">
+                <div class="card-body">
+                    <h6 class="small">Salidas (Piezas)</h6>
+                    <h2 class="fw-bold mb-0">{{ salidas_hoy }}</h2>
+                    <small>Total surtido hoy</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white fw-bold">⚠️ Alerta de Stock Crítico</div>
+                <div class="list-group list-group-flush">
+                    {% for item in lista_critica %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ item.nombre }}
+                        <span class="badge bg-danger rounded-pill">{{ item.stock }} pzas</span>
+                    </div>
+                    {% empty %}
+                    <div class="p-4 text-center text-muted">Todo el stock está en niveles óptimos.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white fw-bold">🚀 Acciones Rápidas</div>
+                <div class="card-body d-grid gap-2">
+                    <a href="{% url 'recibir_manifiesto' %}" class="btn btn-outline-dark text-start py-3">
+🚢 Registrar Entradas de productos
+                    </a>
+                    <a href="{% url 'modulo_requisicion' %}" class="btn btn-outline-info text-start py-3">
+                        📝 Nueva Requisición de Salida
+                    </a>
+                    <a href="{% url 'inventario_maestro' %}" class="btn btn-outline-secondary text-start py-3">
+                        🔍 Ver Inventario Completo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

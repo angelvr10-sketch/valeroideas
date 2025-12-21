@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0 small fw-bold">REGISTRAR SALIDA</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Producto:</label>
+                        <select name="producto_id" class="form-select" required>
+    <option value="">Seleccione...</option>
+    {% for item in catalogo %}
+    <option value="{{ item.id }}">
+        {{ item.nombre }} (Stock: {{ item.stock_real }})
+    </option>
+    {% endfor %}
+</select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Cantidad a retirar:</label>
+                        <input type="number" name="cantidad" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Motivo:</label>
+                        <select name="motivo" class="form-select">
+                            <option value="VENTA">Venta</option>
+                            <option value="MERMA">Merma/Dañado</option>
+                            <option value="TRANSFERENCIA">Transferencia</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-danger w-100 fw-bold">Registrar Salida</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h4 class="mb-3">Últimos Movimientos de Salida</h4>
+        <div class="table-responsive">
+            <table class="table bg-white shadow-sm rounded">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cant.</th>
+                        <th>Motivo</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in salidas %}
+                    <tr>
+                        <td>{{ s.catalogo.nombre }}</td>
+                        <td class="fw-bold text-danger">-{{ s.cantidad }}</td>
+                        <td><span class="badge bg-light text-dark border">{{ s.get_motivo_display }}</span></td>
+                        <td class="small">{{ s.fecha_salida|date:"d/m/y H:i" }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="4" class="text-center">No hay salidas registradas.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
