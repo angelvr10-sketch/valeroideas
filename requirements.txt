@@ -5,4 +5,6 @@ dj-database-url
 psycopg2-binary
 pandas
 numpy
+python-decouple
+dj-database-url
 
