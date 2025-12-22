@@ -85,15 +85,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+db_from_env = dj_database_url.config(conn_max_age=600)
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=DATABASE_URL,
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql', # Forzamos el motor
+    }
 }
+# Mezclamos la configuración de la URL
+DATABASES['default'].update(db_from_env)
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+
 # Verificación de seguridad: si DATABASE_URL no tiene 'postgres', usamos sqlite (local)
 if not DATABASE_URL:
     DATABASES['default'] = {
