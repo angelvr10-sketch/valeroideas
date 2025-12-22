@@ -248,12 +248,10 @@ def inventario_maestro(request):
         'valor_bodega': valor_bodega
     })
 def dashboard(request):
-    # 1. Estadísticas Generales
     total_productos = ProductoCatalogo.objects.count()
     total_stock_bajo = 0
     productos = ProductoCatalogo.objects.all()
     
-    # 2. Identificar productos con stock bajo (menos de 10 unidades)
     lista_critica = []
     for p in productos:
         stock = p.stock_real()
@@ -261,7 +259,6 @@ def dashboard(request):
             total_stock_bajo += 1
             lista_critica.append({'nombre': p.nombre, 'stock': stock})
 
-    # 3. Actividad de hoy
     hoy = timezone.now().date()
     req_hoy = Requisicion.objects.filter(fecha_creacion__date=hoy).count()
     salidas_hoy = Salida.objects.filter(fecha_salida__date=hoy).aggregate(Sum('cantidad'))['cantidad__sum'] or 0
@@ -271,7 +268,7 @@ def dashboard(request):
         'total_stock_bajo': total_stock_bajo,
         'req_hoy': req_hoy,
         'salidas_hoy': salidas_hoy,
-        'lista_critica': lista_critica[:5], # Solo los primeros 5 para no saturar
+        'lista_critica': lista_critica, # Pasamos todos para el gráfico
     })
 
 
