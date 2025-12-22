@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,7 +34,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/">📦 Mi Inventario</a>
+           <a class="navbar-brand d-flex align-items-center" href="{% url 'dashboard' %}">
+    <img src="{% static 'img/logo3.png' %}" 
+         alt="Logo" 
+         width="90" 
+         height="50" 
+         class="d-inline-block align-text-top me-2"
+         
+         >
+    <span class="fw-bold">Mi Inventario Offshore</span>
+</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -147,68 +147,71 @@ def registrar_salida(request):
 
 def modulo_requisicion(request):
     folio = request.GET.get('folio')
+    # Capturamos el ID para descarga automática si existe
+    descargar_pdf_id = request.GET.get('descargar_pdf')
+    
     requisicion = None
     items = []
     catalogo = ProductoCatalogo.objects.all()
 
     if folio:
-        # Buscamos o creamos la requisición por folio
         requisicion, _ = Requisicion.objects.get_or_create(folio=folio)
         
         if request.method == 'POST' and not requisicion.cerrada:
             prod_id = request.POST.get('producto_id')
-            cant = request.POST.get('cantidad')
+            cant_raw = request.POST.get('cantidad')
             solicitante = request.POST.get('solicitante')
             
-            # Guardamos el nombre del solicitante si se envía
             if solicitante:
                 requisicion.solicitante = solicitante
                 requisicion.save()
 
-            if prod_id and cant:
+            if prod_id and cant_raw:
                 producto = get_object_or_404(ProductoCatalogo, id=prod_id)
-            try:
-             cant = int(request.POST.get('cantidad'))
-            except (ValueError, TypeError):
-             cant = 0  # En caso de que el campo llegue vacío o con letras
-    # VALIDACIÓN DE STOCK
-            if cant > producto.stock_real():
-             messages.error(request, f"No puedes agregar {cant} unidades. Stock actual: {producto.stock_real()}")
-            else:
-             ItemRequisicion.objects.create(
-             requisicion=requisicion,
-             catalogo=producto,
-             cantidad=cant
-        )
-             messages.success(request, "Producto añadido.")
-    
+                try:
+                    cant = int(cant_raw)
+                except ValueError:
+                    cant = 0
+
+                if cant > producto.stock_real():
+                    messages.error(request, f"Stock insuficiente. Solo hay {producto.stock_real()} de {producto.nombre}")
+                elif cant <= 0:
+                    messages.error(request, "La cantidad debe ser mayor a 0")
+                else:
+                    ItemRequisicion.objects.create(
+                        requisicion=requisicion,
+                        catalogo=producto,
+                        cantidad=cant
+                    )
+                    messages.success(request, f"{producto.nombre} añadido.")
+            
             return redirect(f'/requisicion/?folio={folio}')
+            
         items = requisicion.items.all()
 
     return render(request, 'inventario/requisicion.html', {
         'requisicion': requisicion,
         'items': items,
         'catalogo': catalogo,
-        'folio': folio
+        'folio': folio,
+        'descargar_pdf_id': descargar_pdf_id # Pasamos el ID al template
     })
 
 def cerrar_requisicion(request, req_id):
     requisicion = get_object_or_404(Requisicion, id=req_id)
-    
     if not requisicion.cerrada:
         requisicion.cerrada = True
         requisicion.save()
         
-        # ESTE ES EL BLOQUE QUE DESCUENTA:
-        # Por cada item en la nota, creamos un registro de Salida
         for item in requisicion.items.all():
             Salida.objects.create(
                 catalogo=item.catalogo,
                 cantidad=item.cantidad,
-                motivo='VENTA' # O el motivo que prefieras
+                motivo='VENTA'
             )
-    
-    return redirect('pdf_requisicion', req_id=requisicion.id)
+    # Redirigimos con el parámetro para descargar
+    return redirect(f'/requisicion/?folio={requisicion.folio}&descargar_pdf={requisicion.id}')
+
 def pdf_requisicion(request, req_id):
     req = get_object_or_404(Requisicion, id=req_id)
     response = HttpResponse(content_type='application/pdf')
