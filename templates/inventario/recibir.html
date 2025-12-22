@@ -195,5 +195,28 @@ window.onload = function() {
     }
 };
 </script>
+<script>
+    // Al cargar la página, revisamos si hay una orden de descarga
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdfId = urlParams.get('descargar_pdf');
+
+        if (pdfId) {
+            // Abrimos el PDF en una pestaña nueva
+            const pdfUrl = "{% url 'pdf_manifiesto' 0 %}".replace('0', pdfId);
+            window.open(pdfUrl, '_blank');
+            
+            // Limpiamos la URL para que no se descargue cada vez que refresquen
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?folio=" + urlParams.get('folio');
+            window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+        }
+        
+        // Mantener tu lógica anterior del buscador...
+        if (localStorage.getItem('regresar_al_buscador') === 'true') {
+            document.getElementById('buscador_input').focus();
+            localStorage.removeItem('regresar_al_buscador');
+        }
+    };
+</script>
 
 {% endblock %}

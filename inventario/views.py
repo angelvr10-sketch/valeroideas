@@ -65,9 +65,10 @@ def cerrar_manifiesto(request, manifiesto_id):
     manifiesto = get_object_or_404(Manifiesto, id=manifiesto_id)
     manifiesto.cerrado = True
     manifiesto.save()
-    # Redirige a la función que genera el PDF que creamos antes
-    return redirect('pdf_manifiesto', manifiesto_id=manifiesto.id)
     
+    # Redirigimos a la misma página de recibir pero avisando que debe descargar el PDF
+    return redirect(f'/recibir/?folio={manifiesto.folio}&descargar_pdf={manifiesto.id}')
+
 def generar_pdf_manifiesto(request, manifiesto_id):
     manifiesto = get_object_or_404(Manifiesto, id=manifiesto_id)
     entradas = ProductoInventario.objects.filter(manifiesto=manifiesto)
