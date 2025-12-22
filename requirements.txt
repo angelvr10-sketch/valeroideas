@@ -7,4 +7,5 @@ pandas
 numpy
 python-decouple
 dj-database-url
-
+reportlab
+Pillow
