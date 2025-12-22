@@ -19,27 +19,39 @@
 
         {% if manifiesto %}
             {% if not manifiesto.cerrado %}
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0 small fw-bold">2. REGISTRAR PRODUCTO</h5>
+                <div class="card shadow-sm border-0 border-primary border-top border-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0 small fw-bold text-primary">2. REGISTRAR PRODUCTO</h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" id="form-producto">
                             {% csrf_token %}
+                            
                             <div class="mb-3">
-                                <label class="form-label small fw-bold">Producto en Catálogo:</label>
-                                <select name="producto_id" class="form-select" required>
-                                    <option value="">Seleccione...</option>
+                                <label class="form-label small fw-bold text-secondary">
+                                    <i class="fas fa-search"></i> Buscar por nombre o barras:
+                                </label>
+                                <input 
+                                    list="productos_list" 
+                                    id="buscador_input" 
+                                    class="form-control border-primary" 
+                                    placeholder="Escribe o escanea..."
+                                    autocomplete="off"
+                                >
+                                <datalist id="productos_list">
                                     {% for item in catalogo %}
-                                    <option value="{{ item.id }}">{{ item.nombre }}</option>
+                                        <option value="{{ item.nombre }}" data-id="{{ item.id }}" data-barcode="{{ item.codigo_barras }}">
+                                            Barras: {{ item.codigo_barras|default:"Sin código" }}
+                                        </option>
                                     {% endfor %}
-                                </select>
+                                </datalist>
+                                <input type="hidden" name="producto_id" id="producto_id_real" required>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col">
                                     <label class="form-label small fw-bold">Cantidad:</label>
-                                    <input type="number" name="cantidad" class="form-control" placeholder="0" required>
+                                    <input type="number" name="cantidad" id="input_cantidad" class="form-control" placeholder="0" required>
                                 </div>
                                 <div class="col">
                                     <label class="form-label small fw-bold">Costo Unitario:</label>
@@ -52,8 +64,8 @@
                                 <input type="date" name="caducidad" class="form-control" required>
                             </div>
 
-                            <button class="btn btn-success w-100 fw-bold shadow-sm">
-                                + Agregar a Manifiesto
+                            <button type="submit" class="btn btn-success w-100 fw-bold shadow-sm py-2">
+                                <i class="fas fa-plus-circle"></i> Agregar a Manifiesto
                             </button>
                         </form>
                     </div>
@@ -79,11 +91,10 @@
             <div class="d-flex justify-content-between align-items-end mb-3">
                 <div>
                     <h3 class="mb-0">Folio: <span class="text-primary">{{ folio }}</span></h3>
-                    
                     {% if not manifiesto.cerrado %}
                         <a href="{% url 'cerrar_manifiesto' manifiesto.id %}" 
                            class="btn btn-success btn-sm mt-2 fw-bold shadow-sm"
-                           onclick="return confirm('¿Finalizar cargamento? Se generará el PDF y no podrás hacer más cambios.')">
+                           onclick="return confirm('¿Finalizar cargamento? No podrás hacer más cambios.')">
                             ✅ Finalizar y Guardar PDF
                         </a>
                     {% else %}
@@ -115,38 +126,22 @@
                             {% elif entrada.dias_para_caducar < 30 %} class="table-warning" {% endif %}>
                             <td>
                                 <div class="fw-bold">{{ entrada.catalogo.nombre }}</div>
-                                <div class="small">
-                                    {% if entrada.dias_para_caducar < 0 %}
-                                        <span class="badge bg-dark">CADUCADO</span>
-                                    {% elif entrada.dias_para_caducar < 30 %}
-                                        <span class="text-danger fw-bold">⚠️ Vence en {{ entrada.dias_para_caducar }} días</span>
-                                    {% else %}
-                                        <span class="text-muted">Vence: {{ entrada.fecha_caducidad|date:"d/m/Y" }}</span>
-                                    {% endif %}
-                                </div>
+                                <div class="small text-muted">Vence: {{ entrada.fecha_caducidad|date:"d/m/Y" }}</div>
                             </td>
                             <td class="text-center">
                                 <span class="badge bg-secondary px-3">{{ entrada.unidades }}</span>
                             </td>
                             <td>${{ entrada.precio_compra }}</td>
-                            <td class="text-end fw-bold text-primary">
-                                ${{ entrada.subtotal }}
-                            </td>
+                            <td class="text-end fw-bold text-primary">${{ entrada.subtotal }}</td>
                             {% if not manifiesto.cerrado %}
                             <td class="text-center">
-                                <a href="/eliminar-entrada/{{ entrada.id }}/" 
-                                   class="btn btn-sm btn-outline-danger"
-                                   onclick="return confirm('¿Eliminar este registro?')">
-                                    🗑️
-                                </a>
+                                <a href="/eliminar-entrada/{{ entrada.id }}/" class="btn btn-sm btn-outline-danger">🗑️</a>
                             </td>
                             {% endif %}
                         </tr>
                         {% empty %}
                         <tr>
-                            <td colspan="5" class="text-center py-5 text-muted">
-                                <p class="mb-0">No hay productos en este folio.</p>
-                            </td>
+                            <td colspan="5" class="text-center py-5 text-muted">No hay productos en este folio.</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -154,11 +149,51 @@
             </div>
         {% else %}
             <div class="text-center mt-5 p-5 bg-white shadow-sm rounded border">
-                <div class="display-1 text-muted mb-4">️🚢</div>
-                <h4 class="text-dark">Módulo de Recepción de Mercancía</h4>
-                <p class="text-secondary">Ingresa un folio de manifiesto para comenzar el registro.</p>
+                <div class="display-1 text-muted mb-4">🚢</div>
+                <h4>Módulo de Recepción de Mercancía</h4>
+                <p class="text-secondary">Ingresa un folio de manifiesto para comenzar.</p>
             </div>
         {% endif %}
     </div>
 </div>
+<script>
+document.getElementById('buscador_input').addEventListener('input', function(e) {
+    const val = e.target.value;
+    const opts = document.getElementById('productos_list').childNodes;
+    const idReal = document.getElementById('producto_id_real');
+    const inputCantidad = document.getElementById('input_cantidad');
+
+    for (let i = 0; i < opts.length; i++) {
+        if (opts[i].nodeName === 'OPTION') {
+            const barcode = opts[i].getAttribute('data-barcode');
+            const nombre = opts[i].value;
+
+            if (val === barcode || val === nombre) {
+                idReal.value = opts[i].getAttribute('data-id');
+                if (val === barcode) e.target.value = nombre;
+                
+                // Salto automático a cantidad
+                inputCantidad.focus();
+                break;
+            }
+        }
+    }
+});
+
+// NUEVO: Regresar el foco al buscador después de enviar el formulario
+document.getElementById('form-producto').addEventListener('submit', function() {
+    // Usamos un pequeño delay para que Django procese y la página recargue
+    // Si la página recarga sola por el POST, el foco se pierde.
+    // Para asegurar que siempre inicie en el buscador al cargar la página:
+    localStorage.setItem('regresar_al_buscador', 'true');
+});
+
+window.onload = function() {
+    if (localStorage.getItem('regresar_al_buscador') === 'true') {
+        document.getElementById('buscador_input').focus();
+        localStorage.removeItem('regresar_al_buscador');
+    }
+};
+</script>
+
 {% endblock %}

@@ -8,26 +8,26 @@ from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 from .models import Salida, Requisicion, ItemRequisicion
 from django.views.decorators.csrf import csrf_protect
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, Q
 from django.utils import timezone
 from .models import ProductoCatalogo, Requisicion, Salida
 from django.contrib import messages
-
 
 @csrf_protect
 def recibir_manifiesto(request):
     folio = request.GET.get('folio')
     manifiesto = None
     entradas = []
-    catalogo = ProductoCatalogo.objects.all()
     total_manifiesto = 0
+    
+    # --- LÓGICA DE BÚSQUEDA PARA EL DATALIST ---
+    # Traemos todo el catálogo para que el datalist/buscador tenga opciones
+    catalogo = ProductoCatalogo.objects.all()
 
     if folio:
-        # Buscamos o creamos el manifiesto
         manifiesto, created = Manifiesto.objects.get_or_create(folio=folio)
+        
         if request.method == 'POST' and not manifiesto.cerrado:
-        # Si el usuario envió el formulario para agregar un producto
-         if request.method == 'POST':
             prod_id = request.POST.get('producto_id')
             cantidad = request.POST.get('cantidad')
             precio = request.POST.get('precio')
@@ -41,19 +41,17 @@ def recibir_manifiesto(request):
                     precio_compra=precio,
                     fecha_caducidad=caducidad
                 )
-                # Recargamos la página con el mismo folio para ver el cambio
+                messages.success(request, "Producto agregado al manifiesto.")
                 return redirect(f'/recibir/?folio={folio}')
 
-        # Obtenemos las entradas y calculamos el total
+        # Datos para la tabla inferior
         entradas = ProductoInventario.objects.filter(manifiesto=manifiesto)
         total_manifiesto = sum(item.unidades * item.precio_compra for item in entradas)
 
-    # --- ESTE RETURN ES EL MÁS IMPORTANTE ---
-    # Debe estar fuera de todos los IF para que siempre devuelva la página
     return render(request, 'inventario/recibir.html', {
         'manifiesto': manifiesto,
         'entradas': entradas,
-        'catalogo': catalogo,
+        'catalogo': catalogo, # Lista completa para el buscador
         'folio': folio,
         'total_manifiesto': total_manifiesto
     })
