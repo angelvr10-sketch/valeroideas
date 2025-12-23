@@ -1,0 +1,4854 @@
+[
+{
+  "model": "inventario.categoria",
+  "pk": 1,
+  "fields": {
+    "nombre": "Abarrotes"
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 143,
+  "fields": {
+    "codigo_barras": "4161432077973",
+    "nombre": "Galletas Sierra Madre 500g",
+    "descripcion": "Producto de abarrotes - Galletas Sierra Madre 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 144,
+  "fields": {
+    "codigo_barras": "3147981682450",
+    "nombre": "Aceite Economax 900ml",
+    "descripcion": "Producto de abarrotes - Aceite Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 145,
+  "fields": {
+    "codigo_barras": "6819617531945",
+    "nombre": "Lentejas La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Lentejas La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 146,
+  "fields": {
+    "codigo_barras": "6349369506587",
+    "nombre": "Cereal La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Cereal La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 147,
+  "fields": {
+    "codigo_barras": "4837436037702",
+    "nombre": "Detergente Sol y Mar 12 pack",
+    "descripcion": "Producto de abarrotes - Detergente Sol y Mar 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 148,
+  "fields": {
+    "codigo_barras": "8279198892819",
+    "nombre": "Sal Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Sal Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 149,
+  "fields": {
+    "codigo_barras": "6339364760739",
+    "nombre": "Leche Economax 1.5L",
+    "descripcion": "Producto de abarrotes - Leche Economax 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 150,
+  "fields": {
+    "codigo_barras": "2435043085111",
+    "nombre": "Sal Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Sal Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 151,
+  "fields": {
+    "codigo_barras": "5170074510914",
+    "nombre": "Lentejas Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Lentejas Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 152,
+  "fields": {
+    "codigo_barras": "8845641948679",
+    "nombre": "Salsa Economax 900ml",
+    "descripcion": "Producto de abarrotes - Salsa Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 153,
+  "fields": {
+    "codigo_barras": "9124043515027",
+    "nombre": "Lentejas La Gloria 500g",
+    "descripcion": "Producto de abarrotes - Lentejas La Gloria 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 154,
+  "fields": {
+    "codigo_barras": "5870412427697",
+    "nombre": "Azúcar Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Azúcar Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 155,
+  "fields": {
+    "codigo_barras": "7510969516895",
+    "nombre": "Aceite La Gloria 1kg",
+    "descripcion": "Producto de abarrotes - Aceite La Gloria 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 156,
+  "fields": {
+    "codigo_barras": "1375965812135",
+    "nombre": "Arroz La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Arroz La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 157,
+  "fields": {
+    "codigo_barras": "2655219245192",
+    "nombre": "Detergente Sierra Madre 900ml",
+    "descripcion": "Producto de abarrotes - Detergente Sierra Madre 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 158,
+  "fields": {
+    "codigo_barras": "0004780528380",
+    "nombre": "Galletas La Gloria 1kg",
+    "descripcion": "Producto de abarrotes - Galletas La Gloria 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 159,
+  "fields": {
+    "codigo_barras": "2694900042555",
+    "nombre": "Galletas Economax 900ml",
+    "descripcion": "Producto de abarrotes - Galletas Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 160,
+  "fields": {
+    "codigo_barras": "6996086275887",
+    "nombre": "Atún La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Atún La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 161,
+  "fields": {
+    "codigo_barras": "8395062223398",
+    "nombre": "Arroz Sol y Mar 1.5L",
+    "descripcion": "Producto de abarrotes - Arroz Sol y Mar 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 162,
+  "fields": {
+    "codigo_barras": "9264316412462",
+    "nombre": "Galletas Sol y Mar 1.5L",
+    "descripcion": "Producto de abarrotes - Galletas Sol y Mar 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 163,
+  "fields": {
+    "codigo_barras": "0540361142875",
+    "nombre": "Mayonesa Premium Gold 1kg",
+    "descripcion": "Producto de abarrotes - Mayonesa Premium Gold 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 164,
+  "fields": {
+    "codigo_barras": "0500929888939",
+    "nombre": "Arroz Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Arroz Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 165,
+  "fields": {
+    "codigo_barras": "1423730786196",
+    "nombre": "Frijol Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Frijol Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 166,
+  "fields": {
+    "codigo_barras": "8453553351435",
+    "nombre": "Azúcar La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Azúcar La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 167,
+  "fields": {
+    "codigo_barras": "6551779835341",
+    "nombre": "Azúcar Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Azúcar Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 168,
+  "fields": {
+    "codigo_barras": "8088369206231",
+    "nombre": "Papel Higiénico Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 169,
+  "fields": {
+    "codigo_barras": "7390105528272",
+    "nombre": "Cereal La Gloria 1kg",
+    "descripcion": "Producto de abarrotes - Cereal La Gloria 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 170,
+  "fields": {
+    "codigo_barras": "1904566997163",
+    "nombre": "Atún Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Atún Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 171,
+  "fields": {
+    "codigo_barras": "2745968779193",
+    "nombre": "Detergente Sol y Mar 500g",
+    "descripcion": "Producto de abarrotes - Detergente Sol y Mar 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 172,
+  "fields": {
+    "codigo_barras": "9849211160300",
+    "nombre": "Azúcar Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Azúcar Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 173,
+  "fields": {
+    "codigo_barras": "7403352639416",
+    "nombre": "Suavizante Sol y Mar 1.5L",
+    "descripcion": "Producto de abarrotes - Suavizante Sol y Mar 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 174,
+  "fields": {
+    "codigo_barras": "0275553135836",
+    "nombre": "Jabón Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Jabón Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 175,
+  "fields": {
+    "codigo_barras": "0452534230297",
+    "nombre": "Jabón Economax 900ml",
+    "descripcion": "Producto de abarrotes - Jabón Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 176,
+  "fields": {
+    "codigo_barras": "2609285179222",
+    "nombre": "Leche Del Campo 500g",
+    "descripcion": "Producto de abarrotes - Leche Del Campo 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 177,
+  "fields": {
+    "codigo_barras": "0716853136128",
+    "nombre": "Cereal Del Campo 1kg",
+    "descripcion": "Producto de abarrotes - Cereal Del Campo 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 178,
+  "fields": {
+    "codigo_barras": "6674259276160",
+    "nombre": "Harina Economax 1.5L",
+    "descripcion": "Producto de abarrotes - Harina Economax 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 179,
+  "fields": {
+    "codigo_barras": "6630130053407",
+    "nombre": "Detergente Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Detergente Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 180,
+  "fields": {
+    "codigo_barras": "5880700041542",
+    "nombre": "Suavizante Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Suavizante Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 181,
+  "fields": {
+    "codigo_barras": "7920758538715",
+    "nombre": "Azúcar La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Azúcar La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 182,
+  "fields": {
+    "codigo_barras": "8794158884412",
+    "nombre": "Galletas La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Galletas La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 183,
+  "fields": {
+    "codigo_barras": "8718210546752",
+    "nombre": "Azúcar La Gloria 250g",
+    "descripcion": "Producto de abarrotes - Azúcar La Gloria 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 184,
+  "fields": {
+    "codigo_barras": "1614379904166",
+    "nombre": "Café Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Café Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 185,
+  "fields": {
+    "codigo_barras": "8108043929231",
+    "nombre": "Arroz Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Arroz Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 186,
+  "fields": {
+    "codigo_barras": "8492835188759",
+    "nombre": "Suavizante Sol y Mar 500g",
+    "descripcion": "Producto de abarrotes - Suavizante Sol y Mar 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 187,
+  "fields": {
+    "codigo_barras": "3995198366176",
+    "nombre": "Cloro Economax 1.5L",
+    "descripcion": "Producto de abarrotes - Cloro Economax 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 188,
+  "fields": {
+    "codigo_barras": "0001709455900",
+    "nombre": "Cereal Del Campo 500g",
+    "descripcion": "Producto de abarrotes - Cereal Del Campo 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 189,
+  "fields": {
+    "codigo_barras": "1980685673058",
+    "nombre": "Lentejas Premium Gold 1kg",
+    "descripcion": "Producto de abarrotes - Lentejas Premium Gold 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 190,
+  "fields": {
+    "codigo_barras": "8228922288564",
+    "nombre": "Leche Economax 900ml",
+    "descripcion": "Producto de abarrotes - Leche Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 191,
+  "fields": {
+    "codigo_barras": "6126177960404",
+    "nombre": "Cereal Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Cereal Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 192,
+  "fields": {
+    "codigo_barras": "9406640994804",
+    "nombre": "Lentejas Premium Gold 900ml",
+    "descripcion": "Producto de abarrotes - Lentejas Premium Gold 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 193,
+  "fields": {
+    "codigo_barras": "9317321146398",
+    "nombre": "Cereal Economax 12 pack",
+    "descripcion": "Producto de abarrotes - Cereal Economax 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 194,
+  "fields": {
+    "codigo_barras": "8747269406584",
+    "nombre": "Lentejas Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Lentejas Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 195,
+  "fields": {
+    "codigo_barras": "3864796960829",
+    "nombre": "Papel Higiénico Sol y Mar 900ml",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Sol y Mar 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 196,
+  "fields": {
+    "codigo_barras": "2154865714085",
+    "nombre": "Papel Higiénico Economax 500g",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 197,
+  "fields": {
+    "codigo_barras": "7209726973858",
+    "nombre": "Cereal Sol y Mar 900ml",
+    "descripcion": "Producto de abarrotes - Cereal Sol y Mar 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 198,
+  "fields": {
+    "codigo_barras": "5619039563004",
+    "nombre": "Lentejas Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Lentejas Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 199,
+  "fields": {
+    "codigo_barras": "5886069388024",
+    "nombre": "Salsa Premium Gold 900ml",
+    "descripcion": "Producto de abarrotes - Salsa Premium Gold 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 200,
+  "fields": {
+    "codigo_barras": "6588364377603",
+    "nombre": "Mayonesa Economax 250g",
+    "descripcion": "Producto de abarrotes - Mayonesa Economax 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 201,
+  "fields": {
+    "codigo_barras": "8286689753820",
+    "nombre": "Frijol Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Frijol Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 202,
+  "fields": {
+    "codigo_barras": "9719754429492",
+    "nombre": "Leche La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Leche La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 203,
+  "fields": {
+    "codigo_barras": "7690461483238",
+    "nombre": "Sal Sierra Madre 900ml",
+    "descripcion": "Producto de abarrotes - Sal Sierra Madre 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 204,
+  "fields": {
+    "codigo_barras": "1333423095190",
+    "nombre": "Café Premium Gold 4 piezas",
+    "descripcion": "Producto de abarrotes - Café Premium Gold 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 205,
+  "fields": {
+    "codigo_barras": "0420956495460",
+    "nombre": "Salsa Del Campo 1kg",
+    "descripcion": "Producto de abarrotes - Salsa Del Campo 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 206,
+  "fields": {
+    "codigo_barras": "6910981853960",
+    "nombre": "Papel Higiénico Premium Gold 4 piezas",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Premium Gold 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 207,
+  "fields": {
+    "codigo_barras": "8871234562746",
+    "nombre": "Cloro Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Cloro Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 208,
+  "fields": {
+    "codigo_barras": "9218294894383",
+    "nombre": "Azúcar Del Campo 1.5L",
+    "descripcion": "Producto de abarrotes - Azúcar Del Campo 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 209,
+  "fields": {
+    "codigo_barras": "1011138042914",
+    "nombre": "Leche Economax 12 pack",
+    "descripcion": "Producto de abarrotes - Leche Economax 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 210,
+  "fields": {
+    "codigo_barras": "1000933413247",
+    "nombre": "Frijol Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Frijol Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 211,
+  "fields": {
+    "codigo_barras": "3837764522001",
+    "nombre": "Leche La Gloria 500g",
+    "descripcion": "Producto de abarrotes - Leche La Gloria 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 212,
+  "fields": {
+    "codigo_barras": "3413677894320",
+    "nombre": "Sal Sierra Madre 250g",
+    "descripcion": "Producto de abarrotes - Sal Sierra Madre 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 213,
+  "fields": {
+    "codigo_barras": "2991550461557",
+    "nombre": "Papel Higiénico Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 214,
+  "fields": {
+    "codigo_barras": "3381828106062",
+    "nombre": "Atún Sierra Madre 500g",
+    "descripcion": "Producto de abarrotes - Atún Sierra Madre 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 215,
+  "fields": {
+    "codigo_barras": "4503292686015",
+    "nombre": "Frijol Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Frijol Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 216,
+  "fields": {
+    "codigo_barras": "7090634094615",
+    "nombre": "Papel Higiénico Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 217,
+  "fields": {
+    "codigo_barras": "4063915046523",
+    "nombre": "Pasta Economax 900ml",
+    "descripcion": "Producto de abarrotes - Pasta Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 218,
+  "fields": {
+    "codigo_barras": "1260149622976",
+    "nombre": "Leche Sierra Madre 12 pack",
+    "descripcion": "Producto de abarrotes - Leche Sierra Madre 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 219,
+  "fields": {
+    "codigo_barras": "2597122983245",
+    "nombre": "Sal Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Sal Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 220,
+  "fields": {
+    "codigo_barras": "5435743748054",
+    "nombre": "Azúcar La Gloria 4 piezas",
+    "descripcion": "Producto de abarrotes - Azúcar La Gloria 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 221,
+  "fields": {
+    "codigo_barras": "3759565400458",
+    "nombre": "Arroz Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Arroz Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 222,
+  "fields": {
+    "codigo_barras": "6934431646919",
+    "nombre": "Mayonesa La Gloria 1.5L",
+    "descripcion": "Producto de abarrotes - Mayonesa La Gloria 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 223,
+  "fields": {
+    "codigo_barras": "0921854982768",
+    "nombre": "Azúcar Economax 500g",
+    "descripcion": "Producto de abarrotes - Azúcar Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 224,
+  "fields": {
+    "codigo_barras": "0525767819172",
+    "nombre": "Detergente La Gloria 12 pack",
+    "descripcion": "Producto de abarrotes - Detergente La Gloria 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 225,
+  "fields": {
+    "codigo_barras": "3718526000783",
+    "nombre": "Café Sierra Madre 250g",
+    "descripcion": "Producto de abarrotes - Café Sierra Madre 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 226,
+  "fields": {
+    "codigo_barras": "5690643361427",
+    "nombre": "Pasta Economax 1kg",
+    "descripcion": "Producto de abarrotes - Pasta Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 227,
+  "fields": {
+    "codigo_barras": "1222724678820",
+    "nombre": "Azúcar Sierra Madre 12 pack",
+    "descripcion": "Producto de abarrotes - Azúcar Sierra Madre 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 228,
+  "fields": {
+    "codigo_barras": "2538254036129",
+    "nombre": "Papel Higiénico Sol y Mar 500g",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Sol y Mar 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 229,
+  "fields": {
+    "codigo_barras": "9337547829066",
+    "nombre": "Galletas Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Galletas Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 230,
+  "fields": {
+    "codigo_barras": "8905146803377",
+    "nombre": "Sal Sol y Mar 1.5L",
+    "descripcion": "Producto de abarrotes - Sal Sol y Mar 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 231,
+  "fields": {
+    "codigo_barras": "5651477170678",
+    "nombre": "Cloro Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Cloro Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 232,
+  "fields": {
+    "codigo_barras": "2978461487710",
+    "nombre": "Frijol Economax 500g",
+    "descripcion": "Producto de abarrotes - Frijol Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 233,
+  "fields": {
+    "codigo_barras": "6604690555143",
+    "nombre": "Café Premium Gold 1kg",
+    "descripcion": "Producto de abarrotes - Café Premium Gold 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 234,
+  "fields": {
+    "codigo_barras": "1964442367291",
+    "nombre": "Pasta Premium Gold 500g",
+    "descripcion": "Producto de abarrotes - Pasta Premium Gold 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 235,
+  "fields": {
+    "codigo_barras": "8626867269601",
+    "nombre": "Suavizante Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Suavizante Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 236,
+  "fields": {
+    "codigo_barras": "1090248456275",
+    "nombre": "Azúcar Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Azúcar Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 237,
+  "fields": {
+    "codigo_barras": "5986383013506",
+    "nombre": "Galletas Premium Gold 12 pack",
+    "descripcion": "Producto de abarrotes - Galletas Premium Gold 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 238,
+  "fields": {
+    "codigo_barras": "1788258975320",
+    "nombre": "Mayonesa Del Campo 1.5L",
+    "descripcion": "Producto de abarrotes - Mayonesa Del Campo 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 239,
+  "fields": {
+    "codigo_barras": "2013709301647",
+    "nombre": "Café Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Café Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 240,
+  "fields": {
+    "codigo_barras": "0958492921050",
+    "nombre": "Leche Economax 1kg",
+    "descripcion": "Producto de abarrotes - Leche Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 241,
+  "fields": {
+    "codigo_barras": "6493932468446",
+    "nombre": "Detergente Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Detergente Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 242,
+  "fields": {
+    "codigo_barras": "8247926623019",
+    "nombre": "Harina Economax 900ml",
+    "descripcion": "Producto de abarrotes - Harina Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 243,
+  "fields": {
+    "codigo_barras": "4682259949690",
+    "nombre": "Cloro Sierra Madre 250g",
+    "descripcion": "Producto de abarrotes - Cloro Sierra Madre 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 244,
+  "fields": {
+    "codigo_barras": "3200257031235",
+    "nombre": "Café Sierra Madre 500g",
+    "descripcion": "Producto de abarrotes - Café Sierra Madre 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 245,
+  "fields": {
+    "codigo_barras": "4103530974454",
+    "nombre": "Harina Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Harina Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 246,
+  "fields": {
+    "codigo_barras": "1672543371415",
+    "nombre": "Detergente Premium Gold 500g",
+    "descripcion": "Producto de abarrotes - Detergente Premium Gold 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 247,
+  "fields": {
+    "codigo_barras": "1521774121319",
+    "nombre": "Café Del Campo 1.5L",
+    "descripcion": "Producto de abarrotes - Café Del Campo 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 248,
+  "fields": {
+    "codigo_barras": "3648456862279",
+    "nombre": "Jabón Sol y Mar 250g",
+    "descripcion": "Producto de abarrotes - Jabón Sol y Mar 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 249,
+  "fields": {
+    "codigo_barras": "2895787076672",
+    "nombre": "Aceite Premium Gold 1kg",
+    "descripcion": "Producto de abarrotes - Aceite Premium Gold 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 250,
+  "fields": {
+    "codigo_barras": "3900165550820",
+    "nombre": "Aceite La Gloria 1.5L",
+    "descripcion": "Producto de abarrotes - Aceite La Gloria 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 251,
+  "fields": {
+    "codigo_barras": "6339940993373",
+    "nombre": "Café Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Café Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 252,
+  "fields": {
+    "codigo_barras": "5579212991104",
+    "nombre": "Salsa Sol y Mar 1.5L",
+    "descripcion": "Producto de abarrotes - Salsa Sol y Mar 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 253,
+  "fields": {
+    "codigo_barras": "8358668668629",
+    "nombre": "Lentejas Economax 900ml",
+    "descripcion": "Producto de abarrotes - Lentejas Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 254,
+  "fields": {
+    "codigo_barras": "7524841413095",
+    "nombre": "Cloro Premium Gold 12 pack",
+    "descripcion": "Producto de abarrotes - Cloro Premium Gold 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 255,
+  "fields": {
+    "codigo_barras": "7350830744519",
+    "nombre": "Cereal La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Cereal La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 256,
+  "fields": {
+    "codigo_barras": "4166107867614",
+    "nombre": "Café Sol y Mar 250g",
+    "descripcion": "Producto de abarrotes - Café Sol y Mar 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 257,
+  "fields": {
+    "codigo_barras": "1971000744191",
+    "nombre": "Salsa Economax 1kg",
+    "descripcion": "Producto de abarrotes - Salsa Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 258,
+  "fields": {
+    "codigo_barras": "2608678912244",
+    "nombre": "Azúcar Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Azúcar Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 259,
+  "fields": {
+    "codigo_barras": "5055653347052",
+    "nombre": "Suavizante Premium Gold 1kg",
+    "descripcion": "Producto de abarrotes - Suavizante Premium Gold 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 260,
+  "fields": {
+    "codigo_barras": "3099360518615",
+    "nombre": "Cereal Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Cereal Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 261,
+  "fields": {
+    "codigo_barras": "7058445197148",
+    "nombre": "Azúcar Premium Gold 900ml",
+    "descripcion": "Producto de abarrotes - Azúcar Premium Gold 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 262,
+  "fields": {
+    "codigo_barras": "7857381303195",
+    "nombre": "Jabón Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Jabón Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 263,
+  "fields": {
+    "codigo_barras": "1361673105177",
+    "nombre": "Detergente Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Detergente Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 264,
+  "fields": {
+    "codigo_barras": "6202824255531",
+    "nombre": "Azúcar Economax 12 pack",
+    "descripcion": "Producto de abarrotes - Azúcar Economax 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 265,
+  "fields": {
+    "codigo_barras": "7120419680866",
+    "nombre": "Sal Del Campo 12 pack",
+    "descripcion": "Producto de abarrotes - Sal Del Campo 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 266,
+  "fields": {
+    "codigo_barras": "2797053020574",
+    "nombre": "Cereal Del Campo 12 pack",
+    "descripcion": "Producto de abarrotes - Cereal Del Campo 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 267,
+  "fields": {
+    "codigo_barras": "4409134941390",
+    "nombre": "Suavizante Del Campo 500g",
+    "descripcion": "Producto de abarrotes - Suavizante Del Campo 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 268,
+  "fields": {
+    "codigo_barras": "8637144275532",
+    "nombre": "Aceite La Gloria 500g",
+    "descripcion": "Producto de abarrotes - Aceite La Gloria 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 269,
+  "fields": {
+    "codigo_barras": "9596031774470",
+    "nombre": "Papel Higiénico Economax 1.5L",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Economax 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 270,
+  "fields": {
+    "codigo_barras": "6964307730315",
+    "nombre": "Leche Premium Gold 250g",
+    "descripcion": "Producto de abarrotes - Leche Premium Gold 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 271,
+  "fields": {
+    "codigo_barras": "1476524795736",
+    "nombre": "Arroz Del Campo 1.5L",
+    "descripcion": "Producto de abarrotes - Arroz Del Campo 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 272,
+  "fields": {
+    "codigo_barras": "6062396801175",
+    "nombre": "Salsa La Gloria 250g",
+    "descripcion": "Producto de abarrotes - Salsa La Gloria 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 273,
+  "fields": {
+    "codigo_barras": "5374114837598",
+    "nombre": "Sal Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Sal Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 274,
+  "fields": {
+    "codigo_barras": "3148804583597",
+    "nombre": "Aceite La Gloria 250g",
+    "descripcion": "Producto de abarrotes - Aceite La Gloria 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 275,
+  "fields": {
+    "codigo_barras": "2997641327966",
+    "nombre": "Jabón Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Jabón Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 276,
+  "fields": {
+    "codigo_barras": "5084480910446",
+    "nombre": "Cereal Sol y Mar 250g",
+    "descripcion": "Producto de abarrotes - Cereal Sol y Mar 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 277,
+  "fields": {
+    "codigo_barras": "0733275581077",
+    "nombre": "Cloro Sierra Madre 1kg",
+    "descripcion": "Producto de abarrotes - Cloro Sierra Madre 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 278,
+  "fields": {
+    "codigo_barras": "7562444500629",
+    "nombre": "Detergente La Gloria 250g",
+    "descripcion": "Producto de abarrotes - Detergente La Gloria 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 279,
+  "fields": {
+    "codigo_barras": "1427198970352",
+    "nombre": "Cloro Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Cloro Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 280,
+  "fields": {
+    "codigo_barras": "8045340516979",
+    "nombre": "Papel Higiénico La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Papel Higiénico La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 281,
+  "fields": {
+    "codigo_barras": "2905514271548",
+    "nombre": "Azúcar Del Campo 1kg",
+    "descripcion": "Producto de abarrotes - Azúcar Del Campo 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 282,
+  "fields": {
+    "codigo_barras": "3784989475268",
+    "nombre": "Arroz Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Arroz Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 283,
+  "fields": {
+    "codigo_barras": "1911813890225",
+    "nombre": "Suavizante Del Campo 1.5L",
+    "descripcion": "Producto de abarrotes - Suavizante Del Campo 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 284,
+  "fields": {
+    "codigo_barras": "1957654612376",
+    "nombre": "Lentejas Sol y Mar 500g",
+    "descripcion": "Producto de abarrotes - Lentejas Sol y Mar 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 285,
+  "fields": {
+    "codigo_barras": "0963013891913",
+    "nombre": "Jabón Sierra Madre 250g",
+    "descripcion": "Producto de abarrotes - Jabón Sierra Madre 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 286,
+  "fields": {
+    "codigo_barras": "9331253581509",
+    "nombre": "Frijol Sol y Mar 500g",
+    "descripcion": "Producto de abarrotes - Frijol Sol y Mar 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 287,
+  "fields": {
+    "codigo_barras": "2108959267249",
+    "nombre": "Suavizante Del Campo 1kg",
+    "descripcion": "Producto de abarrotes - Suavizante Del Campo 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 288,
+  "fields": {
+    "codigo_barras": "7575268078115",
+    "nombre": "Cloro La Gloria 500g",
+    "descripcion": "Producto de abarrotes - Cloro La Gloria 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 289,
+  "fields": {
+    "codigo_barras": "1005382858104",
+    "nombre": "Pasta Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Pasta Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 290,
+  "fields": {
+    "codigo_barras": "6748524280401",
+    "nombre": "Frijol Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Frijol Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 291,
+  "fields": {
+    "codigo_barras": "2182913422407",
+    "nombre": "Galletas Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Galletas Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 292,
+  "fields": {
+    "codigo_barras": "2619683986817",
+    "nombre": "Leche Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Leche Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 293,
+  "fields": {
+    "codigo_barras": "0691743973017",
+    "nombre": "Salsa Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Salsa Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 294,
+  "fields": {
+    "codigo_barras": "7296216484973",
+    "nombre": "Cereal Economax 500g",
+    "descripcion": "Producto de abarrotes - Cereal Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 295,
+  "fields": {
+    "codigo_barras": "6494713456107",
+    "nombre": "Detergente Economax 900ml",
+    "descripcion": "Producto de abarrotes - Detergente Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 296,
+  "fields": {
+    "codigo_barras": "9499858069996",
+    "nombre": "Suavizante Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Suavizante Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 297,
+  "fields": {
+    "codigo_barras": "7219380084426",
+    "nombre": "Papel Higiénico Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Papel Higiénico Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 298,
+  "fields": {
+    "codigo_barras": "1171618012598",
+    "nombre": "Leche Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Leche Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 299,
+  "fields": {
+    "codigo_barras": "0640697800036",
+    "nombre": "Suavizante Sol y Mar 900ml",
+    "descripcion": "Producto de abarrotes - Suavizante Sol y Mar 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 300,
+  "fields": {
+    "codigo_barras": "5698007027493",
+    "nombre": "Lentejas Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Lentejas Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 301,
+  "fields": {
+    "codigo_barras": "6461209826585",
+    "nombre": "Suavizante Economax 500g",
+    "descripcion": "Producto de abarrotes - Suavizante Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 302,
+  "fields": {
+    "codigo_barras": "9284321212208",
+    "nombre": "Azúcar Premium Gold 4 piezas",
+    "descripcion": "Producto de abarrotes - Azúcar Premium Gold 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 303,
+  "fields": {
+    "codigo_barras": "6191180672930",
+    "nombre": "Atún Premium Gold 12 pack",
+    "descripcion": "Producto de abarrotes - Atún Premium Gold 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 304,
+  "fields": {
+    "codigo_barras": "4857148891729",
+    "nombre": "Cereal Sol y Mar 1kg",
+    "descripcion": "Producto de abarrotes - Cereal Sol y Mar 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 305,
+  "fields": {
+    "codigo_barras": "6032970411102",
+    "nombre": "Azúcar Economax 1kg",
+    "descripcion": "Producto de abarrotes - Azúcar Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 306,
+  "fields": {
+    "codigo_barras": "3439493885108",
+    "nombre": "Sal Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Sal Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 307,
+  "fields": {
+    "codigo_barras": "7290651111099",
+    "nombre": "Cereal Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Cereal Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 308,
+  "fields": {
+    "codigo_barras": "4085278031340",
+    "nombre": "Suavizante Sierra Madre 900ml",
+    "descripcion": "Producto de abarrotes - Suavizante Sierra Madre 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 309,
+  "fields": {
+    "codigo_barras": "9174017475894",
+    "nombre": "Mayonesa Del Campo 900ml",
+    "descripcion": "Producto de abarrotes - Mayonesa Del Campo 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 310,
+  "fields": {
+    "codigo_barras": "5509344568861",
+    "nombre": "Cereal Sierra Madre 250g",
+    "descripcion": "Producto de abarrotes - Cereal Sierra Madre 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 311,
+  "fields": {
+    "codigo_barras": "4584254549360",
+    "nombre": "Café Premium Gold 12 pack",
+    "descripcion": "Producto de abarrotes - Café Premium Gold 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 312,
+  "fields": {
+    "codigo_barras": "3874308879518",
+    "nombre": "Galletas Sol y Mar 12 pack",
+    "descripcion": "Producto de abarrotes - Galletas Sol y Mar 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 313,
+  "fields": {
+    "codigo_barras": "0283399567507",
+    "nombre": "Frijol Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Frijol Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 314,
+  "fields": {
+    "codigo_barras": "2835549486338",
+    "nombre": "Sal Premium Gold 4 piezas",
+    "descripcion": "Producto de abarrotes - Sal Premium Gold 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 315,
+  "fields": {
+    "codigo_barras": "8003027599633",
+    "nombre": "Pasta Economax 500g",
+    "descripcion": "Producto de abarrotes - Pasta Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 316,
+  "fields": {
+    "codigo_barras": "5779837747158",
+    "nombre": "Cereal Economax 1kg",
+    "descripcion": "Producto de abarrotes - Cereal Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 317,
+  "fields": {
+    "codigo_barras": "5901697906597",
+    "nombre": "Sal Sierra Madre 500g",
+    "descripcion": "Producto de abarrotes - Sal Sierra Madre 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 318,
+  "fields": {
+    "codigo_barras": "0776333098842",
+    "nombre": "Cereal Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Cereal Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 319,
+  "fields": {
+    "codigo_barras": "8947974124818",
+    "nombre": "Café La Gloria 250g",
+    "descripcion": "Producto de abarrotes - Café La Gloria 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 320,
+  "fields": {
+    "codigo_barras": "9167568007414",
+    "nombre": "Harina Del Campo 4 piezas",
+    "descripcion": "Producto de abarrotes - Harina Del Campo 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 321,
+  "fields": {
+    "codigo_barras": "0765918941672",
+    "nombre": "Café Economax 1.5L",
+    "descripcion": "Producto de abarrotes - Café Economax 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 322,
+  "fields": {
+    "codigo_barras": "7359179353966",
+    "nombre": "Café La Gloria 900ml",
+    "descripcion": "Producto de abarrotes - Café La Gloria 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 323,
+  "fields": {
+    "codigo_barras": "5083267623094",
+    "nombre": "Aceite Del Campo 500g",
+    "descripcion": "Producto de abarrotes - Aceite Del Campo 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 324,
+  "fields": {
+    "codigo_barras": "5272448870148",
+    "nombre": "Mayonesa Economax 500g",
+    "descripcion": "Producto de abarrotes - Mayonesa Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 325,
+  "fields": {
+    "codigo_barras": "2861649496008",
+    "nombre": "Sal Economax 1kg",
+    "descripcion": "Producto de abarrotes - Sal Economax 1kg",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 326,
+  "fields": {
+    "codigo_barras": "9856597489366",
+    "nombre": "Lentejas Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Lentejas Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 327,
+  "fields": {
+    "codigo_barras": "8170983880698",
+    "nombre": "Galletas Del Campo 12 pack",
+    "descripcion": "Producto de abarrotes - Galletas Del Campo 12 pack",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 328,
+  "fields": {
+    "codigo_barras": "1580758072489",
+    "nombre": "Café Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Café Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 329,
+  "fields": {
+    "codigo_barras": "3404418443482",
+    "nombre": "Atún La Gloria 4 piezas",
+    "descripcion": "Producto de abarrotes - Atún La Gloria 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 330,
+  "fields": {
+    "codigo_barras": "1938892053301",
+    "nombre": "Galletas Economax 500g",
+    "descripcion": "Producto de abarrotes - Galletas Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 331,
+  "fields": {
+    "codigo_barras": "3605828833771",
+    "nombre": "Arroz Economax 900ml",
+    "descripcion": "Producto de abarrotes - Arroz Economax 900ml",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 332,
+  "fields": {
+    "codigo_barras": "0900410493599",
+    "nombre": "Jabón La Gloria 4 piezas",
+    "descripcion": "Producto de abarrotes - Jabón La Gloria 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 333,
+  "fields": {
+    "codigo_barras": "7397172553600",
+    "nombre": "Azúcar Sol y Mar 250g",
+    "descripcion": "Producto de abarrotes - Azúcar Sol y Mar 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 334,
+  "fields": {
+    "codigo_barras": "0589916732704",
+    "nombre": "Aceite La Gloria 4 piezas",
+    "descripcion": "Producto de abarrotes - Aceite La Gloria 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 335,
+  "fields": {
+    "codigo_barras": "6782457091727",
+    "nombre": "Cloro Sierra Madre 1.5L",
+    "descripcion": "Producto de abarrotes - Cloro Sierra Madre 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 336,
+  "fields": {
+    "codigo_barras": "1725260029339",
+    "nombre": "Aceite Economax 500g",
+    "descripcion": "Producto de abarrotes - Aceite Economax 500g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 337,
+  "fields": {
+    "codigo_barras": "6829954412981",
+    "nombre": "Suavizante Economax 4 piezas",
+    "descripcion": "Producto de abarrotes - Suavizante Economax 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 338,
+  "fields": {
+    "codigo_barras": "5106670924834",
+    "nombre": "Pasta Sierra Madre 4 piezas",
+    "descripcion": "Producto de abarrotes - Pasta Sierra Madre 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 339,
+  "fields": {
+    "codigo_barras": "2585417343000",
+    "nombre": "Salsa La Gloria 1.5L",
+    "descripcion": "Producto de abarrotes - Salsa La Gloria 1.5L",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 340,
+  "fields": {
+    "codigo_barras": "2212845596464",
+    "nombre": "Leche Del Campo 250g",
+    "descripcion": "Producto de abarrotes - Leche Del Campo 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 341,
+  "fields": {
+    "codigo_barras": "1322736843461",
+    "nombre": "Mayonesa Sol y Mar 4 piezas",
+    "descripcion": "Producto de abarrotes - Mayonesa Sol y Mar 4 piezas",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.productocatalogo",
+  "pk": 342,
+  "fields": {
+    "codigo_barras": "4112096789509",
+    "nombre": "Suavizante Sol y Mar 250g",
+    "descripcion": "Producto de abarrotes - Suavizante Sol y Mar 250g",
+    "categoria": 1
+  }
+},
+{
+  "model": "inventario.manifiesto",
+  "pk": 1,
+  "fields": {
+    "folio": "1",
+    "fecha_llegada": "2025-12-22T02:30:48.712",
+    "cerrado": true
+  }
+},
+{
+  "model": "inventario.manifiesto",
+  "pk": 8,
+  "fields": {
+    "folio": "MAN-008",
+    "fecha_llegada": "2025-12-23T17:59:12.846",
+    "cerrado": false
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 213,
+  "fields": {
+    "catalogo": 197,
+    "manifiesto": 8,
+    "unidades": 35,
+    "precio_compra": "6.34",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 214,
+  "fields": {
+    "catalogo": 162,
+    "manifiesto": 8,
+    "unidades": 28,
+    "precio_compra": "17.91",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 215,
+  "fields": {
+    "catalogo": 179,
+    "manifiesto": 8,
+    "unidades": 19,
+    "precio_compra": "26.05",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 216,
+  "fields": {
+    "catalogo": 180,
+    "manifiesto": 8,
+    "unidades": 24,
+    "precio_compra": "27.97",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 217,
+  "fields": {
+    "catalogo": 198,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "25.23",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 218,
+  "fields": {
+    "catalogo": 144,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "23.34",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 219,
+  "fields": {
+    "catalogo": 158,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "28.97",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 220,
+  "fields": {
+    "catalogo": 177,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "17.71",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 221,
+  "fields": {
+    "catalogo": 154,
+    "manifiesto": 8,
+    "unidades": 34,
+    "precio_compra": "17.16",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 222,
+  "fields": {
+    "catalogo": 143,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "29.07",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 223,
+  "fields": {
+    "catalogo": 175,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "11.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 224,
+  "fields": {
+    "catalogo": 146,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "9.08",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 225,
+  "fields": {
+    "catalogo": 185,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "26.55",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 226,
+  "fields": {
+    "catalogo": 193,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "5.76",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 227,
+  "fields": {
+    "catalogo": 159,
+    "manifiesto": 8,
+    "unidades": 2,
+    "precio_compra": "10.78",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 228,
+  "fields": {
+    "catalogo": 173,
+    "manifiesto": 8,
+    "unidades": 34,
+    "precio_compra": "23.00",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 229,
+  "fields": {
+    "catalogo": 174,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "22.35",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 230,
+  "fields": {
+    "catalogo": 178,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "14.47",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 231,
+  "fields": {
+    "catalogo": 190,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "13.55",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 232,
+  "fields": {
+    "catalogo": 169,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "27.38",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 233,
+  "fields": {
+    "catalogo": 181,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "8.90",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 234,
+  "fields": {
+    "catalogo": 149,
+    "manifiesto": 8,
+    "unidades": 47,
+    "precio_compra": "19.12",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 235,
+  "fields": {
+    "catalogo": 160,
+    "manifiesto": 8,
+    "unidades": 23,
+    "precio_compra": "8.82",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 236,
+  "fields": {
+    "catalogo": 153,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "14.50",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 237,
+  "fields": {
+    "catalogo": 196,
+    "manifiesto": 8,
+    "unidades": 12,
+    "precio_compra": "22.56",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 238,
+  "fields": {
+    "catalogo": 147,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "17.10",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 239,
+  "fields": {
+    "catalogo": 148,
+    "manifiesto": 8,
+    "unidades": 25,
+    "precio_compra": "6.07",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 240,
+  "fields": {
+    "catalogo": 163,
+    "manifiesto": 8,
+    "unidades": 30,
+    "precio_compra": "17.24",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 241,
+  "fields": {
+    "catalogo": 156,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "29.11",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 242,
+  "fields": {
+    "catalogo": 188,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "11.38",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 243,
+  "fields": {
+    "catalogo": 191,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "26.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 244,
+  "fields": {
+    "catalogo": 151,
+    "manifiesto": 8,
+    "unidades": 13,
+    "precio_compra": "29.23",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 245,
+  "fields": {
+    "catalogo": 192,
+    "manifiesto": 8,
+    "unidades": 13,
+    "precio_compra": "15.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 246,
+  "fields": {
+    "catalogo": 155,
+    "manifiesto": 8,
+    "unidades": 5,
+    "precio_compra": "28.36",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 247,
+  "fields": {
+    "catalogo": 150,
+    "manifiesto": 8,
+    "unidades": 48,
+    "precio_compra": "5.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 248,
+  "fields": {
+    "catalogo": 183,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "29.90",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 249,
+  "fields": {
+    "catalogo": 152,
+    "manifiesto": 8,
+    "unidades": 30,
+    "precio_compra": "22.77",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 250,
+  "fields": {
+    "catalogo": 167,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "8.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 251,
+  "fields": {
+    "catalogo": 165,
+    "manifiesto": 8,
+    "unidades": 30,
+    "precio_compra": "9.64",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 252,
+  "fields": {
+    "catalogo": 184,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "25.33",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 253,
+  "fields": {
+    "catalogo": 189,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "9.74",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 254,
+  "fields": {
+    "catalogo": 166,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "13.00",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 255,
+  "fields": {
+    "catalogo": 194,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "9.41",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 256,
+  "fields": {
+    "catalogo": 199,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "24.61",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 257,
+  "fields": {
+    "catalogo": 186,
+    "manifiesto": 8,
+    "unidades": 40,
+    "precio_compra": "23.48",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 258,
+  "fields": {
+    "catalogo": 164,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "13.71",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 259,
+  "fields": {
+    "catalogo": 145,
+    "manifiesto": 8,
+    "unidades": 34,
+    "precio_compra": "17.14",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 260,
+  "fields": {
+    "catalogo": 157,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "24.11",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 261,
+  "fields": {
+    "catalogo": 182,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "13.64",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 262,
+  "fields": {
+    "catalogo": 171,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "7.65",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 263,
+  "fields": {
+    "catalogo": 176,
+    "manifiesto": 8,
+    "unidades": 42,
+    "precio_compra": "23.09",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 264,
+  "fields": {
+    "catalogo": 168,
+    "manifiesto": 8,
+    "unidades": 7,
+    "precio_compra": "29.38",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 265,
+  "fields": {
+    "catalogo": 187,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "9.80",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 266,
+  "fields": {
+    "catalogo": 172,
+    "manifiesto": 8,
+    "unidades": 24,
+    "precio_compra": "7.93",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 267,
+  "fields": {
+    "catalogo": 195,
+    "manifiesto": 8,
+    "unidades": 47,
+    "precio_compra": "24.27",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 268,
+  "fields": {
+    "catalogo": 161,
+    "manifiesto": 8,
+    "unidades": 35,
+    "precio_compra": "21.04",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 269,
+  "fields": {
+    "catalogo": 170,
+    "manifiesto": 8,
+    "unidades": 38,
+    "precio_compra": "12.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 270,
+  "fields": {
+    "catalogo": 143,
+    "manifiesto": 8,
+    "unidades": 21,
+    "precio_compra": "44.59",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 271,
+  "fields": {
+    "catalogo": 144,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "23.60",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 272,
+  "fields": {
+    "catalogo": 145,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "30.17",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 273,
+  "fields": {
+    "catalogo": 146,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "22.42",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 274,
+  "fields": {
+    "catalogo": 147,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "26.07",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 275,
+  "fields": {
+    "catalogo": 148,
+    "manifiesto": 8,
+    "unidades": 35,
+    "precio_compra": "30.82",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 276,
+  "fields": {
+    "catalogo": 149,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "46.65",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 277,
+  "fields": {
+    "catalogo": 150,
+    "manifiesto": 8,
+    "unidades": 45,
+    "precio_compra": "34.46",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 278,
+  "fields": {
+    "catalogo": 151,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "34.85",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 279,
+  "fields": {
+    "catalogo": 152,
+    "manifiesto": 8,
+    "unidades": 32,
+    "precio_compra": "36.43",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 280,
+  "fields": {
+    "catalogo": 153,
+    "manifiesto": 8,
+    "unidades": 44,
+    "precio_compra": "35.65",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 281,
+  "fields": {
+    "catalogo": 154,
+    "manifiesto": 8,
+    "unidades": 2,
+    "precio_compra": "26.35",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 282,
+  "fields": {
+    "catalogo": 155,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "40.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 283,
+  "fields": {
+    "catalogo": 156,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "35.83",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 284,
+  "fields": {
+    "catalogo": 157,
+    "manifiesto": 8,
+    "unidades": 17,
+    "precio_compra": "42.60",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 285,
+  "fields": {
+    "catalogo": 158,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "47.13",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 286,
+  "fields": {
+    "catalogo": 159,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "44.30",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 287,
+  "fields": {
+    "catalogo": 160,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "40.24",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 288,
+  "fields": {
+    "catalogo": 161,
+    "manifiesto": 8,
+    "unidades": 42,
+    "precio_compra": "39.22",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 289,
+  "fields": {
+    "catalogo": 162,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "30.56",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 290,
+  "fields": {
+    "catalogo": 163,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "23.58",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 291,
+  "fields": {
+    "catalogo": 164,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "47.89",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 292,
+  "fields": {
+    "catalogo": 165,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "44.62",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 293,
+  "fields": {
+    "catalogo": 166,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "38.41",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 294,
+  "fields": {
+    "catalogo": 167,
+    "manifiesto": 8,
+    "unidades": 36,
+    "precio_compra": "48.04",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 295,
+  "fields": {
+    "catalogo": 168,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "29.74",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 296,
+  "fields": {
+    "catalogo": 169,
+    "manifiesto": 8,
+    "unidades": 41,
+    "precio_compra": "31.21",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 297,
+  "fields": {
+    "catalogo": 170,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "24.96",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 298,
+  "fields": {
+    "catalogo": 171,
+    "manifiesto": 8,
+    "unidades": 28,
+    "precio_compra": "41.98",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 299,
+  "fields": {
+    "catalogo": 172,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "46.98",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 300,
+  "fields": {
+    "catalogo": 173,
+    "manifiesto": 8,
+    "unidades": 21,
+    "precio_compra": "29.73",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 301,
+  "fields": {
+    "catalogo": 174,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "26.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 302,
+  "fields": {
+    "catalogo": 175,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "40.56",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 303,
+  "fields": {
+    "catalogo": 176,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "48.43",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 304,
+  "fields": {
+    "catalogo": 177,
+    "manifiesto": 8,
+    "unidades": 27,
+    "precio_compra": "37.19",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 305,
+  "fields": {
+    "catalogo": 178,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "37.32",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 306,
+  "fields": {
+    "catalogo": 179,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "28.36",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 307,
+  "fields": {
+    "catalogo": 180,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "43.01",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 308,
+  "fields": {
+    "catalogo": 181,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "48.35",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 309,
+  "fields": {
+    "catalogo": 182,
+    "manifiesto": 8,
+    "unidades": 45,
+    "precio_compra": "43.50",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 310,
+  "fields": {
+    "catalogo": 183,
+    "manifiesto": 8,
+    "unidades": 40,
+    "precio_compra": "45.89",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 311,
+  "fields": {
+    "catalogo": 184,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "46.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 312,
+  "fields": {
+    "catalogo": 185,
+    "manifiesto": 8,
+    "unidades": 34,
+    "precio_compra": "28.68",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 313,
+  "fields": {
+    "catalogo": 186,
+    "manifiesto": 8,
+    "unidades": 25,
+    "precio_compra": "28.58",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 314,
+  "fields": {
+    "catalogo": 187,
+    "manifiesto": 8,
+    "unidades": 40,
+    "precio_compra": "38.32",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 315,
+  "fields": {
+    "catalogo": 188,
+    "manifiesto": 8,
+    "unidades": 44,
+    "precio_compra": "45.44",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 316,
+  "fields": {
+    "catalogo": 189,
+    "manifiesto": 8,
+    "unidades": 22,
+    "precio_compra": "37.53",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 317,
+  "fields": {
+    "catalogo": 190,
+    "manifiesto": 8,
+    "unidades": 19,
+    "precio_compra": "37.87",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 318,
+  "fields": {
+    "catalogo": 191,
+    "manifiesto": 8,
+    "unidades": 45,
+    "precio_compra": "43.95",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 319,
+  "fields": {
+    "catalogo": 192,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "35.93",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 320,
+  "fields": {
+    "catalogo": 193,
+    "manifiesto": 8,
+    "unidades": 28,
+    "precio_compra": "26.30",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 321,
+  "fields": {
+    "catalogo": 194,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "37.00",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 322,
+  "fields": {
+    "catalogo": 195,
+    "manifiesto": 8,
+    "unidades": 48,
+    "precio_compra": "35.88",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 323,
+  "fields": {
+    "catalogo": 196,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "39.69",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 324,
+  "fields": {
+    "catalogo": 197,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "41.92",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 325,
+  "fields": {
+    "catalogo": 198,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "41.89",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 326,
+  "fields": {
+    "catalogo": 199,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "47.55",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 327,
+  "fields": {
+    "catalogo": 200,
+    "manifiesto": 8,
+    "unidades": 19,
+    "precio_compra": "37.25",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 328,
+  "fields": {
+    "catalogo": 201,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "28.31",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 329,
+  "fields": {
+    "catalogo": 202,
+    "manifiesto": 8,
+    "unidades": 7,
+    "precio_compra": "46.76",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 330,
+  "fields": {
+    "catalogo": 203,
+    "manifiesto": 8,
+    "unidades": 21,
+    "precio_compra": "30.31",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 331,
+  "fields": {
+    "catalogo": 204,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "47.69",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 332,
+  "fields": {
+    "catalogo": 205,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "47.86",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 333,
+  "fields": {
+    "catalogo": 206,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "20.18",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 334,
+  "fields": {
+    "catalogo": 207,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "39.25",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 335,
+  "fields": {
+    "catalogo": 208,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "25.10",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 336,
+  "fields": {
+    "catalogo": 209,
+    "manifiesto": 8,
+    "unidades": 2,
+    "precio_compra": "21.60",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 337,
+  "fields": {
+    "catalogo": 210,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "20.55",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 338,
+  "fields": {
+    "catalogo": 211,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "34.56",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 339,
+  "fields": {
+    "catalogo": 212,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "22.08",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 340,
+  "fields": {
+    "catalogo": 213,
+    "manifiesto": 8,
+    "unidades": 19,
+    "precio_compra": "37.56",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 341,
+  "fields": {
+    "catalogo": 214,
+    "manifiesto": 8,
+    "unidades": 45,
+    "precio_compra": "20.81",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 342,
+  "fields": {
+    "catalogo": 215,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "34.40",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 343,
+  "fields": {
+    "catalogo": 216,
+    "manifiesto": 8,
+    "unidades": 44,
+    "precio_compra": "45.70",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 344,
+  "fields": {
+    "catalogo": 217,
+    "manifiesto": 8,
+    "unidades": 22,
+    "precio_compra": "34.37",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 345,
+  "fields": {
+    "catalogo": 218,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "33.04",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 346,
+  "fields": {
+    "catalogo": 219,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "47.38",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 347,
+  "fields": {
+    "catalogo": 220,
+    "manifiesto": 8,
+    "unidades": 31,
+    "precio_compra": "43.58",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 348,
+  "fields": {
+    "catalogo": 221,
+    "manifiesto": 8,
+    "unidades": 20,
+    "precio_compra": "28.12",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 349,
+  "fields": {
+    "catalogo": 222,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "26.19",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 350,
+  "fields": {
+    "catalogo": 223,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "29.73",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 351,
+  "fields": {
+    "catalogo": 224,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "23.57",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 352,
+  "fields": {
+    "catalogo": 225,
+    "manifiesto": 8,
+    "unidades": 23,
+    "precio_compra": "41.40",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 353,
+  "fields": {
+    "catalogo": 226,
+    "manifiesto": 8,
+    "unidades": 20,
+    "precio_compra": "34.24",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 354,
+  "fields": {
+    "catalogo": 227,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "23.67",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 355,
+  "fields": {
+    "catalogo": 228,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "32.41",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 356,
+  "fields": {
+    "catalogo": 229,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "43.90",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 357,
+  "fields": {
+    "catalogo": 230,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "46.52",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 358,
+  "fields": {
+    "catalogo": 231,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "22.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 359,
+  "fields": {
+    "catalogo": 232,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "40.58",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 360,
+  "fields": {
+    "catalogo": 233,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "28.12",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 361,
+  "fields": {
+    "catalogo": 234,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "45.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 362,
+  "fields": {
+    "catalogo": 235,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "40.16",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 363,
+  "fields": {
+    "catalogo": 236,
+    "manifiesto": 8,
+    "unidades": 28,
+    "precio_compra": "44.90",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 364,
+  "fields": {
+    "catalogo": 237,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "24.18",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 365,
+  "fields": {
+    "catalogo": 238,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "39.24",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 366,
+  "fields": {
+    "catalogo": 239,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "34.18",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 367,
+  "fields": {
+    "catalogo": 240,
+    "manifiesto": 8,
+    "unidades": 2,
+    "precio_compra": "35.59",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 368,
+  "fields": {
+    "catalogo": 241,
+    "manifiesto": 8,
+    "unidades": 48,
+    "precio_compra": "43.49",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 369,
+  "fields": {
+    "catalogo": 242,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "22.81",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 370,
+  "fields": {
+    "catalogo": 243,
+    "manifiesto": 8,
+    "unidades": 30,
+    "precio_compra": "49.71",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 371,
+  "fields": {
+    "catalogo": 244,
+    "manifiesto": 8,
+    "unidades": 9,
+    "precio_compra": "21.69",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 372,
+  "fields": {
+    "catalogo": 245,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "22.39",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 373,
+  "fields": {
+    "catalogo": 246,
+    "manifiesto": 8,
+    "unidades": 19,
+    "precio_compra": "42.51",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 374,
+  "fields": {
+    "catalogo": 247,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "45.87",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 375,
+  "fields": {
+    "catalogo": 248,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "27.78",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 376,
+  "fields": {
+    "catalogo": 249,
+    "manifiesto": 8,
+    "unidades": 12,
+    "precio_compra": "35.61",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 377,
+  "fields": {
+    "catalogo": 250,
+    "manifiesto": 8,
+    "unidades": 13,
+    "precio_compra": "21.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 378,
+  "fields": {
+    "catalogo": 251,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "33.47",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 379,
+  "fields": {
+    "catalogo": 252,
+    "manifiesto": 8,
+    "unidades": 47,
+    "precio_compra": "22.23",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 380,
+  "fields": {
+    "catalogo": 253,
+    "manifiesto": 8,
+    "unidades": 2,
+    "precio_compra": "39.00",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 381,
+  "fields": {
+    "catalogo": 254,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "42.21",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 382,
+  "fields": {
+    "catalogo": 255,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "47.26",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 383,
+  "fields": {
+    "catalogo": 256,
+    "manifiesto": 8,
+    "unidades": 31,
+    "precio_compra": "36.16",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 384,
+  "fields": {
+    "catalogo": 257,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "38.63",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 385,
+  "fields": {
+    "catalogo": 258,
+    "manifiesto": 8,
+    "unidades": 36,
+    "precio_compra": "34.97",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 386,
+  "fields": {
+    "catalogo": 259,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "48.25",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 387,
+  "fields": {
+    "catalogo": 260,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "29.15",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 388,
+  "fields": {
+    "catalogo": 261,
+    "manifiesto": 8,
+    "unidades": 21,
+    "precio_compra": "49.86",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 389,
+  "fields": {
+    "catalogo": 262,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "25.42",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 390,
+  "fields": {
+    "catalogo": 263,
+    "manifiesto": 8,
+    "unidades": 41,
+    "precio_compra": "35.94",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 391,
+  "fields": {
+    "catalogo": 264,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "49.79",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 392,
+  "fields": {
+    "catalogo": 265,
+    "manifiesto": 8,
+    "unidades": 46,
+    "precio_compra": "42.66",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 393,
+  "fields": {
+    "catalogo": 266,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "48.28",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 394,
+  "fields": {
+    "catalogo": 267,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "48.74",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 395,
+  "fields": {
+    "catalogo": 268,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "32.40",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 396,
+  "fields": {
+    "catalogo": 269,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "32.54",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 397,
+  "fields": {
+    "catalogo": 270,
+    "manifiesto": 8,
+    "unidades": 48,
+    "precio_compra": "29.22",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 398,
+  "fields": {
+    "catalogo": 271,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "46.16",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 399,
+  "fields": {
+    "catalogo": 272,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "41.92",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 400,
+  "fields": {
+    "catalogo": 273,
+    "manifiesto": 8,
+    "unidades": 35,
+    "precio_compra": "21.57",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 401,
+  "fields": {
+    "catalogo": 274,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "29.42",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 402,
+  "fields": {
+    "catalogo": 275,
+    "manifiesto": 8,
+    "unidades": 47,
+    "precio_compra": "47.89",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 403,
+  "fields": {
+    "catalogo": 276,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "41.18",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 404,
+  "fields": {
+    "catalogo": 277,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "25.37",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 405,
+  "fields": {
+    "catalogo": 278,
+    "manifiesto": 8,
+    "unidades": 18,
+    "precio_compra": "21.65",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 406,
+  "fields": {
+    "catalogo": 279,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "31.79",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 407,
+  "fields": {
+    "catalogo": 280,
+    "manifiesto": 8,
+    "unidades": 36,
+    "precio_compra": "35.03",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 408,
+  "fields": {
+    "catalogo": 281,
+    "manifiesto": 8,
+    "unidades": 4,
+    "precio_compra": "30.10",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 409,
+  "fields": {
+    "catalogo": 282,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "24.40",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 410,
+  "fields": {
+    "catalogo": 283,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "45.48",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 411,
+  "fields": {
+    "catalogo": 284,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "35.35",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 412,
+  "fields": {
+    "catalogo": 285,
+    "manifiesto": 8,
+    "unidades": 1,
+    "precio_compra": "20.87",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 413,
+  "fields": {
+    "catalogo": 286,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "49.94",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 414,
+  "fields": {
+    "catalogo": 287,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "22.40",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 415,
+  "fields": {
+    "catalogo": 288,
+    "manifiesto": 8,
+    "unidades": 31,
+    "precio_compra": "25.86",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 416,
+  "fields": {
+    "catalogo": 289,
+    "manifiesto": 8,
+    "unidades": 7,
+    "precio_compra": "42.93",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 417,
+  "fields": {
+    "catalogo": 290,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "39.85",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 418,
+  "fields": {
+    "catalogo": 291,
+    "manifiesto": 8,
+    "unidades": 25,
+    "precio_compra": "26.66",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 419,
+  "fields": {
+    "catalogo": 292,
+    "manifiesto": 8,
+    "unidades": 42,
+    "precio_compra": "22.03",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 420,
+  "fields": {
+    "catalogo": 293,
+    "manifiesto": 8,
+    "unidades": 49,
+    "precio_compra": "43.24",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 421,
+  "fields": {
+    "catalogo": 294,
+    "manifiesto": 8,
+    "unidades": 3,
+    "precio_compra": "43.50",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 422,
+  "fields": {
+    "catalogo": 295,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "25.87",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 423,
+  "fields": {
+    "catalogo": 296,
+    "manifiesto": 8,
+    "unidades": 45,
+    "precio_compra": "22.62",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 424,
+  "fields": {
+    "catalogo": 297,
+    "manifiesto": 8,
+    "unidades": 42,
+    "precio_compra": "30.15",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 425,
+  "fields": {
+    "catalogo": 298,
+    "manifiesto": 8,
+    "unidades": 41,
+    "precio_compra": "32.12",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 426,
+  "fields": {
+    "catalogo": 299,
+    "manifiesto": 8,
+    "unidades": 35,
+    "precio_compra": "42.80",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 427,
+  "fields": {
+    "catalogo": 300,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "33.83",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 428,
+  "fields": {
+    "catalogo": 301,
+    "manifiesto": 8,
+    "unidades": 15,
+    "precio_compra": "43.94",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 429,
+  "fields": {
+    "catalogo": 302,
+    "manifiesto": 8,
+    "unidades": 22,
+    "precio_compra": "27.34",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 430,
+  "fields": {
+    "catalogo": 303,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "25.78",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 431,
+  "fields": {
+    "catalogo": 304,
+    "manifiesto": 8,
+    "unidades": 20,
+    "precio_compra": "37.61",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 432,
+  "fields": {
+    "catalogo": 305,
+    "manifiesto": 8,
+    "unidades": 23,
+    "precio_compra": "28.79",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 433,
+  "fields": {
+    "catalogo": 306,
+    "manifiesto": 8,
+    "unidades": 5,
+    "precio_compra": "47.22",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 434,
+  "fields": {
+    "catalogo": 307,
+    "manifiesto": 8,
+    "unidades": 5,
+    "precio_compra": "41.50",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 435,
+  "fields": {
+    "catalogo": 308,
+    "manifiesto": 8,
+    "unidades": 27,
+    "precio_compra": "20.76",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 436,
+  "fields": {
+    "catalogo": 309,
+    "manifiesto": 8,
+    "unidades": 10,
+    "precio_compra": "34.32",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 437,
+  "fields": {
+    "catalogo": 310,
+    "manifiesto": 8,
+    "unidades": 24,
+    "precio_compra": "47.86",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 438,
+  "fields": {
+    "catalogo": 311,
+    "manifiesto": 8,
+    "unidades": 29,
+    "precio_compra": "30.11",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 439,
+  "fields": {
+    "catalogo": 312,
+    "manifiesto": 8,
+    "unidades": 38,
+    "precio_compra": "36.75",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 440,
+  "fields": {
+    "catalogo": 313,
+    "manifiesto": 8,
+    "unidades": 11,
+    "precio_compra": "41.28",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 441,
+  "fields": {
+    "catalogo": 314,
+    "manifiesto": 8,
+    "unidades": 36,
+    "precio_compra": "20.20",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 442,
+  "fields": {
+    "catalogo": 315,
+    "manifiesto": 8,
+    "unidades": 44,
+    "precio_compra": "35.22",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 443,
+  "fields": {
+    "catalogo": 316,
+    "manifiesto": 8,
+    "unidades": 12,
+    "precio_compra": "24.00",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 444,
+  "fields": {
+    "catalogo": 317,
+    "manifiesto": 8,
+    "unidades": 40,
+    "precio_compra": "34.97",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 445,
+  "fields": {
+    "catalogo": 318,
+    "manifiesto": 8,
+    "unidades": 50,
+    "precio_compra": "23.46",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 446,
+  "fields": {
+    "catalogo": 319,
+    "manifiesto": 8,
+    "unidades": 14,
+    "precio_compra": "35.17",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 447,
+  "fields": {
+    "catalogo": 320,
+    "manifiesto": 8,
+    "unidades": 39,
+    "precio_compra": "37.19",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 448,
+  "fields": {
+    "catalogo": 321,
+    "manifiesto": 8,
+    "unidades": 33,
+    "precio_compra": "46.08",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 449,
+  "fields": {
+    "catalogo": 322,
+    "manifiesto": 8,
+    "unidades": 12,
+    "precio_compra": "39.02",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 450,
+  "fields": {
+    "catalogo": 323,
+    "manifiesto": 8,
+    "unidades": 27,
+    "precio_compra": "22.28",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 451,
+  "fields": {
+    "catalogo": 324,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "20.04",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 452,
+  "fields": {
+    "catalogo": 325,
+    "manifiesto": 8,
+    "unidades": 47,
+    "precio_compra": "45.01",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 453,
+  "fields": {
+    "catalogo": 326,
+    "manifiesto": 8,
+    "unidades": 7,
+    "precio_compra": "34.49",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 454,
+  "fields": {
+    "catalogo": 327,
+    "manifiesto": 8,
+    "unidades": 27,
+    "precio_compra": "33.64",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 455,
+  "fields": {
+    "catalogo": 328,
+    "manifiesto": 8,
+    "unidades": 43,
+    "precio_compra": "42.18",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 456,
+  "fields": {
+    "catalogo": 329,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "36.37",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 457,
+  "fields": {
+    "catalogo": 330,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "46.64",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 458,
+  "fields": {
+    "catalogo": 331,
+    "manifiesto": 8,
+    "unidades": 6,
+    "precio_compra": "38.96",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 459,
+  "fields": {
+    "catalogo": 332,
+    "manifiesto": 8,
+    "unidades": 32,
+    "precio_compra": "47.60",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 460,
+  "fields": {
+    "catalogo": 333,
+    "manifiesto": 8,
+    "unidades": 40,
+    "precio_compra": "21.08",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 461,
+  "fields": {
+    "catalogo": 334,
+    "manifiesto": 8,
+    "unidades": 26,
+    "precio_compra": "38.76",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 462,
+  "fields": {
+    "catalogo": 335,
+    "manifiesto": 8,
+    "unidades": 12,
+    "precio_compra": "28.59",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 463,
+  "fields": {
+    "catalogo": 336,
+    "manifiesto": 8,
+    "unidades": 42,
+    "precio_compra": "35.68",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 464,
+  "fields": {
+    "catalogo": 337,
+    "manifiesto": 8,
+    "unidades": 16,
+    "precio_compra": "41.23",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 465,
+  "fields": {
+    "catalogo": 338,
+    "manifiesto": 8,
+    "unidades": 36,
+    "precio_compra": "22.62",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 466,
+  "fields": {
+    "catalogo": 339,
+    "manifiesto": 8,
+    "unidades": 37,
+    "precio_compra": "36.95",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 467,
+  "fields": {
+    "catalogo": 340,
+    "manifiesto": 8,
+    "unidades": 31,
+    "precio_compra": "21.22",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 468,
+  "fields": {
+    "catalogo": 341,
+    "manifiesto": 8,
+    "unidades": 8,
+    "precio_compra": "28.43",
+    "fecha_caducidad": "2026-01-31"
+  }
+},
+{
+  "model": "inventario.productoinventario",
+  "pk": 469,
+  "fields": {
+    "catalogo": 342,
+    "manifiesto": 8,
+    "unidades": 17,
+    "precio_compra": "26.38",
+    "fecha_caducidad": "2026-01-31"
+  }
+}
+]
