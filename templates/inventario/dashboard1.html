@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 pb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-dark mb-0">📊 Resumen de Operaciones</h2>
+        <span class="badge bg-light text-dark border shadow-sm p-2">
+            <i class="far fa-calendar-alt me-1"></i> {% now "d F Y" %}
+        </span>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-primary text-white h-100">
+                <div class="card-body">
+                    <h6 class="small text-uppercase opacity-75">Catálogo</h6>
+                    <h2 class="fw-bold mb-0">{{ total_productos }}</h2>
+                    <small>Productos registrados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm {% if total_stock_bajo > 0 %}bg-danger animate__animated animate__pulse animate__infinite{% else %}bg-secondary{% endif %} text-white h-100">
+                <div class="card-body">
+                    <h6 class="small text-uppercase opacity-75">Stock Bajo</h6>
+                    <h2 class="fw-bold mb-0">{{ total_stock_bajo }}</h2>
+                    <small>Requieren surtido</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-success text-white h-100">
+                <div class="card-body">
+                    <h6 class="small text-uppercase opacity-75">Requisiciones</h6>
+                    <h2 class="fw-bold mb-0">{{ req_hoy }}</h2>
+                    <small>Generadas hoy</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card border-0 shadow-sm bg-warning text-dark h-100">
+                <div class="card-body">
+                    <h6 class="small text-uppercase opacity-75">Salidas</h6>
+                    <h2 class="fw-bold mb-0">{{ salidas_hoy }}</h2>
+                    <small>Piezas surtidas hoy</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white fw-bold d-flex align-items-center">
+                    <i class="fas fa-chart-bar me-2 text-primary"></i> 
+                    Análisis de Productos Críticos (Stock < 10)
+                </div>
+                <div class="card-body">
+                    <div style="position: relative; height:250px; width:100%">
+                        <canvas id="graficoStock"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-7">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white fw-bold d-flex justify-content-between align-items-center">
+                    <span>⚠️ Detalle de Alertas</span>
+                    <span class="badge bg-light text-danger border">{{ lista_critica|length }} alertas</span>
+                </div>
+                <div class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
+                    {% for item in lista_critica %}
+                    <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                        <div>
+                            <h6 class="mb-0 fw-bold">{{ item.nombre }}</h6>
+                            <small class="text-muted">Estado: Crítico</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-danger rounded-pill px-3">{{ item.stock }} unidades</span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="p-5 text-center">
+                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                        <p class="text-muted">No hay productos con stock bajo actualmente.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-white fw-bold">🚀 Acciones del Sistema</div>
+                <div class="card-body d-grid gap-3">
+                    <a href="{% url 'recibir_manifiesto' %}" class="btn btn-outline-dark text-start p-3 shadow-sm border-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-ship fa-2x me-3 opacity-50"></i>
+                            <div>
+                                <div class="fw-bold">✅Registrar Entradas</div>
+                                <small>Cargar mercancía al inventario</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'modulo_requisicion' %}" class="btn btn-outline-info text-start p-3 shadow-sm border-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-file-invoice fa-2x me-3 opacity-50"></i>
+                            <div>
+                                <div class="fw-bold">📤 Nueva Requisición</div>
+                                <small>Generar folio de salida</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="{% url 'inventario_maestro' %}" class="btn btn-outline-secondary text-start p-3 shadow-sm border-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-warehouse fa-2x me-3 opacity-50"></i>
+                            <div>
+                                <div class="fw-bold">📋Inventario Maestro</div>
+                                <small>Consultar todo el stock</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('graficoStock').getContext('2d');
+        
+        // Datos de Django
+        const labels = [{% for item in lista_critica %}'{{ item.nombre }}',{% endfor %}];
+        const data = [{% for item in lista_critica %}{{ item.stock }},{% endfor %}];
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Unidades',
+                    data: data,
+                    backgroundColor: 'rgba(220, 53, 69, 0.7)',
+                    borderColor: 'rgba(220, 53, 69, 1)',
+                    borderWidth: 1,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        grid: { color: '#f0f0f0' }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

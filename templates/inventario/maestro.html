@@ -1,50 +1,96 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>📊 Inventario Maestro (Stock Real)</h2>
-        <div class="text-end">
-            <span class="text-muted small d-block">PRODUCTOS EN CATÁLOGO</span>
-            <h4 class="fw-bold">{{ productos.count }}</h4>
+<div class="w-full bg-gray-50 min-h-screen">
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 px-2">
+        <div>
+            <h1 class="text-3xl font-black text-slate-800 tracking-tight">Inventario Maestro</h1>
+            <p class="text-slate-500 font-medium italic">Control total de existencias en tiempo real</p>
+        </div>
+        <div class="bg-indigo-600 px-6 py-3 rounded-2xl shadow-lg text-white">
+            <p class="text-[10px] font-bold uppercase opacity-80 tracking-widest text-center">Valor Estimado</p>
+            <h3 class="text-xl font-black">${{ valor_bodega }}</h3>
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover bg-white shadow-sm rounded align-middle">
-            <thead class="table-dark">
-                <tr>
-                    <th>Producto</th>
-                    <th class="text-center">Total Entradas</th>
-                    <th class="text-center">Total Salidas</th>
-                    <th class="text-center">Existencia Actual</th>
-                    <th class="text-center">Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for p in productos %}
-                <tr>
-                    <td class="fw-bold">{{ p.nombre }}</td>
-                    <td class="text-center text-muted">{{ p.total_entradas }}</td>
-                    <td class="text-center text-muted">{{ p.total_salidas }}</td>
-                    <td class="text-center">
-                        <span class="h5 fw-bold {% if p.stock_real <= 0 %}text-danger{% else %}text-success{% endif %}">
-                            {{ p.stock_real }}
-                        </span>
-                    </td>
-                    <td class="text-center">
-                        {% if p.stock_real <= 0 %}
-                            <span class="badge bg-danger">AGOTADO</span>
-                        {% elif p.stock_real < 10 %}
-                            <span class="badge bg-warning text-dark">STOCK BAJO</span>
-                        {% else %}
-                            <span class="badge bg-success">DISPONIBLE</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 mb-6 flex flex-col md:flex-row gap-4">
+        <div class="relative flex-grow">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+                <i class="fas fa-search"></i>
+            </span>
+            <input type="text" id="filtro_maestro" placeholder="Buscar por nombre, código o categoría..." 
+                   class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition">
+        </div>
+        <button class="bg-slate-800 text-white px-5 py-2 rounded-xl font-bold hover:bg-slate-700 transition">
+            <i class="fas fa-filter mr-2 text-xs"></i> Filtros
+        </button>
+    </div>
+
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left" id="tabla_productos">
+                <thead>
+                    <tr class="bg-slate-800 text-white text-[10px] uppercase font-black tracking-widest">
+                        <th class="px-6 py-4">Producto / Detalles</th>
+                        <th class="px-6 py-4 text-center">Stock Real</th>
+                        <th class="px-6 py-4 text-center">Estado</th>
+                        <th class="px-6 py-4 text-right">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    {% for p in productos %}
+                    <tr class="hover:bg-indigo-50/30 transition-colors fila-producto">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 mr-4">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">{{ p.nombre }}</p>
+                                    <p class="text-[10px] text-slate-400 font-mono">{{ p.codigo_barras|default:"SIN CÓDIGO" }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="text-lg font-black {% if p.stock_real <= 5 %}text-red-600{% elif p.stock_real <= 15 %}text-amber-500{% else %}text-emerald-600{% endif %}">
+                                {{ p.stock_real }}
+                            </span>
+                            <span class="text-[10px] text-slate-400 block font-bold uppercase">Unidades</span>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            {% if p.stock_real <= 5 %}
+                                <span class="bg-red-100 text-red-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Crítico</span>
+                            {% elif p.stock_real <= 15 %}
+                                <span class="bg-amber-100 text-amber-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Reorden</span>
+                            {% else %}
+                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Óptimo</span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end space-x-2">
+                                <a href="/admin/inventario/productocatalogo/{{ p.id }}/change/" class="p-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-indigo-600 hover:text-white transition">
+                                    <i class="fas fa-edit text-xs"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('filtro_maestro').addEventListener('keyup', function() {
+        let filtro = this.value.toLowerCase();
+        let filas = document.querySelectorAll('.fila-producto');
+        
+        filas.forEach(fila => {
+            let texto = fila.innerText.toLowerCase();
+            fila.style.display = texto.includes(filtro) ? '' : 'none';
+        });
+    });
+</script>
 {% endblock %}

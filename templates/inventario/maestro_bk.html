@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📊 Inventario Maestro (Stock Real)</h2>
+        <div class="text-end">
+            <span class="text-muted small d-block">PRODUCTOS EN CATÁLOGO</span>
+            <h4 class="fw-bold">{{ productos.count }}</h4>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover bg-white shadow-sm rounded align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Producto</th>
+                    <th class="text-center">Total Entradas</th>
+                    <th class="text-center">Total Salidas</th>
+                    <th class="text-center">Existencia Actual</th>
+                    <th class="text-center">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in productos %}
+                <tr>
+                    <td class="fw-bold">{{ p.nombre }}</td>
+                    <td class="text-center text-muted">{{ p.total_entradas }}</td>
+                    <td class="text-center text-muted">{{ p.total_salidas }}</td>
+                    <td class="text-center">
+                        <span class="h5 fw-bold {% if p.stock_real <= 0 %}text-danger{% else %}text-success{% endif %}">
+                            {{ p.stock_real }}
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        {% if p.stock_real <= 0 %}
+                            <span class="badge bg-danger">AGOTADO</span>
+                        {% elif p.stock_real < 10 %}
+                            <span class="badge bg-warning text-dark">STOCK BAJO</span>
+                        {% else %}
+                            <span class="badge bg-success">DISPONIBLE</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

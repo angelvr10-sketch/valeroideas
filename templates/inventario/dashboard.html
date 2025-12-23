@@ -1,173 +1,110 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-4 pb-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark mb-0">📊 Resumen de Operaciones</h2>
-        <span class="badge bg-light text-dark border shadow-sm p-2">
-            <i class="far fa-calendar-alt me-1"></i> {% now "d F Y" %}
-        </span>
-    </div>
-
-    <div class="row g-3 mb-4">
-        <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm bg-primary text-white h-100">
-                <div class="card-body">
-                    <h6 class="small text-uppercase opacity-75">Catálogo</h6>
-                    <h2 class="fw-bold mb-0">{{ total_productos }}</h2>
-                    <small>Productos registrados</small>
-                </div>
-            </div>
+<div class="w-full bg-gray-50 dark:bg-slate-950 min-h-screen transition-colors duration-300">
+    
+    <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-4 px-2">
+        <div>
+            <h1 class="text-3xl font-black text-slate-800 dark:text-white tracking-tight">Panel de Control</h1>
+            <p class="text-slate-500 dark:text-slate-400 font-medium">Resumen de operaciones del día</p>
         </div>
-        <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm {% if total_stock_bajo > 0 %}bg-danger animate__animated animate__pulse animate__infinite{% else %}bg-secondary{% endif %} text-white h-100">
-                <div class="card-body">
-                    <h6 class="small text-uppercase opacity-75">Stock Bajo</h6>
-                    <h2 class="fw-bold mb-0">{{ total_stock_bajo }}</h2>
-                    <small>Requieren surtido</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm bg-success text-white h-100">
-                <div class="card-body">
-                    <h6 class="small text-uppercase opacity-75">Requisiciones</h6>
-                    <h2 class="fw-bold mb-0">{{ req_hoy }}</h2>
-                    <small>Generadas hoy</small>
-                </div>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card border-0 shadow-sm bg-warning text-dark h-100">
-                <div class="card-body">
-                    <h6 class="small text-uppercase opacity-75">Salidas</h6>
-                    <h2 class="fw-bold mb-0">{{ salidas_hoy }}</h2>
-                    <small>Piezas surtidas hoy</small>
-                </div>
-            </div>
+        <div class="flex space-x-2 w-full md:w-auto">
+            <a href="{% url 'modulo_requisicion' %}" class="flex-1 md:flex-none bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold shadow-lg shadow-blue-200 dark:shadow-none text-center transition-all active:scale-95">
+                <i class="fas fa-minus-circle mr-2"></i> Nueva Requisicion
+            </a>
         </div>
     </div>
 
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-white fw-bold d-flex align-items-center">
-                    <i class="fas fa-chart-bar me-2 text-primary"></i> 
-                    Análisis de Productos Críticos (Stock < 10)
-                </div>
-                <div class="card-body">
-                    <div style="position: relative; height:250px; width:100%">
-                        <canvas id="graficoStock"></canvas>
-                    </div>
-                </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 px-2">
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+            <div class="bg-blue-50 dark:bg-blue-900/20 w-12 h-12 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                <i class="fas fa-boxes-stacked text-xl"></i>
             </div>
+            <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider">Catálogo Total</p>
+            <h3 class="text-3xl font-black text-slate-800 dark:text-white">{{ total_productos }}</h3>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 border-l-4 border-l-red-500 transition-colors">
+            <div class="bg-red-50 dark:bg-red-900/20 w-12 h-12 rounded-xl flex items-center justify-center text-red-600 dark:text-red-400 mb-4">
+                <i class="fas fa-triangle-exclamation text-xl"></i>
+            </div>
+            <p class="text-red-400 dark:text-red-500 text-xs font-bold uppercase tracking-wider">Stock Bajo (< 10)</p>
+            <h3 class="text-3xl font-black text-slate-800 dark:text-white">{{ total_stock_bajo }}</h3>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+            <div class="bg-indigo-50 dark:bg-indigo-900/20 w-12 h-12 rounded-xl flex items-center justify-center text-indigo-600 dark:text-indigo-400 mb-4">
+                <i class="fas fa-file-invoice text-xl"></i>
+            </div>
+            <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider">Requisiciones Hoy</p>
+            <h3 class="text-3xl font-black text-slate-800 dark:text-white">{{ req_hoy }}</h3>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors">
+            <div class="bg-amber-50 dark:bg-amber-900/20 w-12 h-12 rounded-xl flex items-center justify-center text-amber-600 dark:text-amber-400 mb-4">
+                <i class="fas fa-dolly text-xl"></i>
+            </div>
+            <p class="text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider">Unidades Salidas</p>
+            <h3 class="text-3xl font-black text-slate-800 dark:text-white">{{ salidas_hoy }}</h3>
         </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-md-7">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-header bg-white fw-bold d-flex justify-content-between align-items-center">
-                    <span>⚠️ Detalle de Alertas</span>
-                    <span class="badge bg-light text-danger border">{{ lista_critica|length }} alertas</span>
-                </div>
-                <div class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
-                    {% for item in lista_critica %}
-                    <div class="list-group-item d-flex justify-content-between align-items-center py-3">
-                        <div>
-                            <h6 class="mb-0 fw-bold">{{ item.nombre }}</h6>
-                            <small class="text-muted">Estado: Crítico</small>
-                        </div>
-                        <div class="text-end">
-                            <span class="badge bg-danger rounded-pill px-3">{{ item.stock }} unidades</span>
-                        </div>
-                    </div>
-                    {% empty %}
-                    <div class="p-5 text-center">
-                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                        <p class="text-muted">No hay productos con stock bajo actualmente.</p>
-                    </div>
-                    {% endfor %}
-                </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 px-2 pb-10">
+        <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden transition-colors">
+            <div class="p-6 bg-slate-800 dark:bg-slate-800 text-white flex justify-between items-center">
+                <h3 class="font-bold tracking-wide text-lg">Alertas de Reposición</h3>
+                <span class="text-xs font-bold bg-red-500 px-3 py-1 rounded-full uppercase">Acción Requerida</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 text-[10px] uppercase font-black tracking-widest">
+                            <th class="px-6 py-4">Producto</th>
+                            <th class="px-6 py-4 text-center">Stock Actual</th>
+                            <th class="px-6 py-4 text-center">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                        {% for item in lista_critica %}
+                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-slate-700 dark:text-slate-300">{{ item.nombre }}</td>
+                            <td class="px-6 py-4 text-center font-mono font-bold text-red-600 dark:text-red-400">{{ item.stock }}</td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-black px-3 py-1 rounded-lg uppercase">Crítico</span>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="px-6 py-10 text-center text-slate-400 dark:text-slate-500 font-medium italic">
+                                No hay productos con stock bajo. ¡Buen trabajo!
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="col-md-5">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-header bg-white fw-bold">🚀 Acciones del Sistema</div>
-                <div class="card-body d-grid gap-3">
-                    <a href="{% url 'recibir_manifiesto' %}" class="btn btn-outline-dark text-start p-3 shadow-sm border-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-ship fa-2x me-3 opacity-50"></i>
-                            <div>
-                                <div class="fw-bold">✅Registrar Entradas</div>
-                                <small>Cargar mercancía al inventario</small>
-                            </div>
+        <div class="bg-indigo-900 dark:bg-indigo-950 rounded-3xl p-8 text-white shadow-2xl shadow-indigo-200 dark:shadow-none relative overflow-hidden transition-colors">
+            <div class="relative z-10">
+                <h3 class="text-xl font-bold mb-6 italic">Accesos Rápidos</h3>
+                <div class="space-y-4">
+                    <a href="/recibir/" class="flex items-center p-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all border border-white/10 group">
+                        <div class="bg-white/20 p-3 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-ship"></i>
                         </div>
+                        <span class="font-bold">Recibir Manifiesto</span>
                     </a>
-                    <a href="{% url 'modulo_requisicion' %}" class="btn btn-outline-info text-start p-3 shadow-sm border-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-file-invoice fa-2x me-3 opacity-50"></i>
-                            <div>
-                                <div class="fw-bold">📤 Nueva Requisición</div>
-                                <small>Generar folio de salida</small>
-                            </div>
+                    <a href="/maestro/" class="flex items-center p-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all border border-white/10 group">
+                        <div class="bg-white/20 p-3 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-warehouse"></i>
                         </div>
-                    </a>
-                    <a href="{% url 'inventario_maestro' %}" class="btn btn-outline-secondary text-start p-3 shadow-sm border-2">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-warehouse fa-2x me-3 opacity-50"></i>
-                            <div>
-                                <div class="fw-bold">📋Inventario Maestro</div>
-                                <small>Consultar todo el stock</small>
-                            </div>
-                        </div>
+                        <span class="font-bold">Inventario Maestro</span>
                     </a>
                 </div>
             </div>
+            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const ctx = document.getElementById('graficoStock').getContext('2d');
-        
-        // Datos de Django
-        const labels = [{% for item in lista_critica %}'{{ item.nombre }}',{% endfor %}];
-        const data = [{% for item in lista_critica %}{{ item.stock }},{% endfor %}];
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Unidades',
-                    data: data,
-                    backgroundColor: 'rgba(220, 53, 69, 0.7)',
-                    borderColor: 'rgba(220, 53, 69, 1)',
-                    borderWidth: 1,
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    y: { 
-                        beginAtZero: true,
-                        grid: { color: '#f0f0f0' }
-                    },
-                    x: {
-                        grid: { display: false }
-                    }
-                }
-            }
-        });
-    });
-</script>
 {% endblock %}

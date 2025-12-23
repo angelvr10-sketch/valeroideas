@@ -117,7 +117,7 @@ def generar_pdf_manifiesto(request, manifiesto_id):
 
     doc.build(elements)
     return response
-    # inventario/views.py
+    
 
 
 def registrar_salida(request):
