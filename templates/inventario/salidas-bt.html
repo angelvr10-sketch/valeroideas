@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-md-5">
+        <div class="card shadow-sm border-0 border-top border-primary border-4">
+            <div class="card-header bg-white">
+                <h5 class="mb-0 fw-bold text-primary"><i class="fas fa-minus-circle"></i> REGISTRAR SALIDA DIRECTA</h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="form-salida">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-secondary text-uppercase">1. Producto (Nombre o Código):</label>
+                        <input 
+                            list="lista_productos" 
+                            id="input_buscador" 
+                            class="form-control border-primary" 
+                            placeholder="Escribe o escanea..."
+                            autocomplete="off"
+                            required
+                        >
+                        <datalist id="lista_productos">
+                            {% for p in catalogo %}
+                                <option value="{{ p.nombre }}" 
+                                        data-id="{{ p.id }}" 
+                                        data-barcode="{{ p.codigo_barras }}" 
+                                        data-stock="{{ p.stock_real }}">
+                                    Disponible: {{ p.stock_real }} | {{ p.codigo_barras|default:"S/N" }}
+                                </option>
+                            {% endfor %}
+                        </datalist>
+                        <input type="hidden" name="producto_id" id="producto_id_real">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold text-secondary text-uppercase">2. Cantidad:</label>
+                            <input type="number" name="cantidad" id="input_cantidad" class="form-control" placeholder="0" min="1" required>
+                            <div id="aviso_stock" class="form-text mt-1"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small fw-bold text-secondary text-uppercase">3. Motivo:</label>
+                            <select name="motivo" class="form-select" required>
+                                <option value="VENTA">Venta</option>
+                                <option value="MERMA">Merma/Daño</option>
+                                <option value="CONSUMO">Consumo Interno</option>
+                                <option value="AJUSTE">Ajuste de Inv.</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 fw-bold shadow-sm py-2">
+                        COMPLETAR SALIDA
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0 small fw-bold">ÚLTIMAS 10 SALIDAS</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                        <tr class="small text-uppercase">
+                            <th>Producto</th>
+                            <th class="text-center">Cant.</th>
+                            <th>Motivo</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in salidas %}
+                        <tr>
+                            <td class="fw-bold">{{ s.catalogo.nombre }}</td>
+                            <td class="text-center">
+                                <span class="badge bg-light text-danger border border-danger px-3">
+                                    -{{ s.cantidad }}
+                                </span>
+                            </td>
+                            <td><span class="small">{{ s.motivo }}</span></td>
+                            <td class="text-muted small">{{ s.fecha_salida|date:"d/m H:i" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('input_buscador').addEventListener('input', function(e) {
+        const val = e.target.value;
+        const opts = document.getElementById('lista_productos').childNodes;
+        const idHidden = document.getElementById('producto_id_real');
+        const inputCant = document.getElementById('input_cantidad');
+        const aviso = document.getElementById('aviso_stock');
+
+        for (let i = 0; i < opts.length; i++) {
+            if (opts[i].nodeName === 'OPTION') {
+                const barcode = opts[i].getAttribute('data-barcode');
+                const nombre = opts[i].value;
+                const stock = opts[i].getAttribute('data-stock');
+
+                if (val === barcode || val === nombre) {
+                    idHidden.value = opts[i].getAttribute('data-id');
+                    
+                    if (val === barcode) e.target.value = nombre;
+
+                    // Validación de stock visual
+                    aviso.innerHTML = `Stock: <strong>${stock}</strong>`;
+                    aviso.className = parseInt(stock) > 0 ? "form-text text-success" : "form-text text-danger";
+                    
+                    // Salto automático a cantidad
+                    inputCant.focus();
+                    break;
+                }
+            }
+        }
+    });
+
+    // Mantener el foco tras registrar para velocidad de captura
+    window.onload = function() {
+        if (localStorage.getItem('foco_salida') === 'true') {
+            document.getElementById('input_buscador').focus();
+            localStorage.removeItem('foco_salida');
+        }
+    };
+
+    document.getElementById('form-salida').addEventListener('submit', function() {
+        localStorage.setItem('foco_salida', 'true');
+    });
+</script>
+{% endblock %}

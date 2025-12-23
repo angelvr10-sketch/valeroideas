@@ -250,27 +250,62 @@ def inventario_maestro(request):
         'valor_bodega': valor_bodega
     })
 def dashboard(request):
-    total_productos = ProductoCatalogo.objects.count()
-    total_stock_bajo = 0
+    # 1. MÉTRICAS BÁSICAS
     productos = ProductoCatalogo.objects.all()
+    total_productos = productos.count()
     
-    lista_critica = []
+    # 2. CÁLCULO DE VALOR TOTAL Y STOCK CRÍTICO
+    valor_total = 0
+    productos_criticos = 0
+    lista_alertas = [] # Para la sección de "Alertas Prioritarias"
+
     for p in productos:
         stock = p.stock_real()
-        if stock < 10:
-            total_stock_bajo += 1
-            lista_critica.append({'nombre': p.nombre, 'stock': stock})
+        # Calculamos valor (puedes usar el precio del último manifiesto o un campo costo en el modelo)
+        # Aquí asumo un valor representativo, ajusta a tu campo de precio si existe
+        valor_total += (stock * 10) 
 
+        # Identificar Stock Crítico (Menos de 5 unidades)
+        if stock <= 5:
+            productos_criticos += 1
+            lista_alertas.append({
+                'nombre': p.nombre,
+                'mensaje': 'Inventario en nivel crítico',
+                'tipo': 'stock',
+                'valor': f'{stock} uds'
+            })
+
+    # 3. PRÓXIMOS A VENCER (Lógica de caducidad)
+    # Buscamos en ProductoInventario los lotes que vencen en los próximos 15 días
     hoy = timezone.now().date()
+    quince_dias = hoy + timezone.timedelta(days=15)
+    
+    lotes_por_vencer = ProductoInventario.objects.filter(
+        fecha_caducidad__range=[hoy, quince_dias]
+    ).select_related('catalogo')
+
+    proximos_a_vencer = lotes_por_vencer.count()
+
+    for lote in lotes_por_vencer:
+        lista_alertas.append({
+            'nombre': lote.catalogo.nombre,
+            'mensaje': f'Lote vence el {lote.fecha_caducidad.strftime("%d/%m")}',
+            'tipo': 'vencimiento',
+            'valor': 'Vence pronto'
+        })
+
+    # 4. ACTIVIDAD DE HOY
     req_hoy = Requisicion.objects.filter(fecha_creacion__date=hoy).count()
     salidas_hoy = Salida.objects.filter(fecha_salida__date=hoy).aggregate(Sum('cantidad'))['cantidad__sum'] or 0
 
     return render(request, 'inventario/dashboard.html', {
         'total_productos': total_productos,
-        'total_stock_bajo': total_stock_bajo,
+        'productos_criticos': productos_criticos,
+        'proximos_a_vencer': proximos_a_vencer,
+        'valor_total': f'{valor_total:,}', # Formato con comas
         'req_hoy': req_hoy,
         'salidas_hoy': salidas_hoy,
-        'lista_critica': lista_critica, # Pasamos todos para el gráfico
+        'alertas_lista': lista_alertas[:6], # Limitamos a las 6 más importantes
     })
 
 

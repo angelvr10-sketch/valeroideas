@@ -1,43 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row mt-3">
-    <div class="col-md-4">
-        <div class="card shadow-sm mb-4 border-0">
-            <div class="card-header bg-dark text-white">
-                <h5 class="mb-0 small fw-bold">1. IDENTIFICAR MANIFIESTO</h5>
-            </div>
-            <div class="card-body">
-                <form method="GET">
-                    <div class="input-group">
-                        <input type="text" name="folio" class="form-control" placeholder="Folio del manifiesto..." value="{{ folio|default:'' }}">
-                        <button class="btn btn-primary">Cargar</button>
-                    </div>
-                </form>
-            </div>
+<div class="container-fluid px-2 sm:px-4 py-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 space-y-4 md:space-y-0">
+        <div>
+            <h1 class="text-3xl font-black text-slate-800 dark:text-white">Recepción de Mercancía</h1>
+            <p class="text-slate-500 dark:text-slate-400">Gestión de manifiestos y carga de inventario.</p>
         </div>
+        {% if folio %}
+        <div class="bg-blue-600 px-6 py-3 rounded-2xl shadow-lg shadow-blue-500/30 text-white">
+            <span class="text-xs uppercase font-bold opacity-80 block">Folio Activo</span>
+            <span class="text-xl font-black">{{ folio }}</span>
+        </div>
+        {% endif %}
+    </div>
 
-        {% if manifiesto %}
-            {% if not manifiesto.cerrado %}
-                <div class="card shadow-sm border-0 border-primary border-top border-4">
-                    <div class="card-header bg-white">
-                        <h5 class="mb-0 small fw-bold text-primary">2. REGISTRAR PRODUCTO</h5>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" id="form-producto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-4 space-y-6">
+            
+          <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-800">
+    <div class="flex items-center space-x-2 mb-4">
+        <div class="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg text-slate-500">
+            <span class="font-bold text-xs">1</span>
+        </div>
+        <h5 class="font-black text-slate-800 dark:text-slate-200 uppercase text-xs tracking-wider">Identificar Manifiesto</h5>
+    </div>
+    
+    <form method="GET" class="flex flex-row items-center w-full space-x-2">
+        <div class="relative flex-grow">
+            <input type="text" name="folio" 
+                class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none dark:text-white transition-all text-sm" 
+                placeholder="Folio..." value="{{ folio|default:'' }}">
+        </div>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl font-bold shadow-md shadow-blue-500/20 active:scale-95 transition-all flex-shrink-0 text-sm">
+            <i class="fas fa-sync-alt md:hidden"></i> <span class="hidden md:inline">Cargar</span> </button>
+    </form>
+</div>
+
+
+            {% if manifiesto %}
+                {% if not manifiesto.cerrado %}
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border-t-4 border-blue-500">
+                        <div class="flex items-center space-x-2 mb-6">
+                            <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg text-blue-600">2</div>
+                            <h5 class="font-black text-slate-800 dark:text-slate-200 uppercase text-xs tracking-wider">Registrar Producto</h5>
+                        </div>
+                        
+                        <form method="POST" id="form-producto" class="space-y-4">
                             {% csrf_token %}
                             
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold text-secondary">
-                                    <i class="fas fa-search"></i> Buscar por nombre o barras:
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mb-2 ml-1">
+                                    <i class="fas fa-search me-1"></i> Buscar por nombre o barras
                                 </label>
-                                <input 
-                                    list="productos_list" 
-                                    id="buscador_input" 
-                                    class="form-control border-primary" 
-                                    placeholder="Escribe o escanea..."
-                                    autocomplete="off"
-                                >
+                                <input list="productos_list" id="buscador_input" 
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-2 border-blue-100 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none dark:text-white transition-all" 
+                                    placeholder="Escribe o escanea..." autocomplete="off">
                                 <datalist id="productos_list">
                                     {% for item in catalogo %}
                                         <option value="{{ item.nombre }}" data-id="{{ item.id }}" data-barcode="{{ item.codigo_barras }}">
@@ -48,114 +67,126 @@
                                 <input type="hidden" name="producto_id" id="producto_id_real" required>
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <label class="form-label small fw-bold">Cantidad:</label>
-                                    <input type="number" name="cantidad" id="input_cantidad" class="form-control" placeholder="0" required>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Cantidad</label>
+                                    <input type="number" name="cantidad" id="input_cantidad" 
+                                        class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none dark:text-white" 
+                                        placeholder="0" required>
                                 </div>
-                                <div class="col">
-                                    <label class="form-label small fw-bold">Costo Unitario:</label>
-                                    <input type="number" step="0.01" name="precio" class="form-control" placeholder="0.00" required>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Costo Unit.</label>
+                                    <input type="number" step="0.01" name="precio" 
+                                        class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none dark:text-white" 
+                                        placeholder="0.00" required>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">Fecha de Caducidad:</label>
-                                <input type="date" name="caducidad" class="form-control" required>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Fecha de Caducidad</label>
+                                <input type="date" name="caducidad" 
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none dark:text-white" required>
                             </div>
 
-                            <button type="submit" class="btn btn-success w-100 fw-bold shadow-sm py-2">
-                                <i class="fas fa-plus-circle"></i> Agregar a Manifiesto
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center space-x-2">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>AGREGAR A MANIFIESTO</span>
                             </button>
                         </form>
                     </div>
-                </div>
-            {% else %}
-                <div class="card shadow-sm border-0 border-start border-warning border-5">
-                    <div class="card-body text-center py-4">
-                        <h1 class="display-6">🔒</h1>
-                        <h5 class="fw-bold text-warning">MANIFIESTO CERRADO</h5>
-                        <p class="text-muted small">Este registro ya fue guardado y no permite modificaciones.</p>
-                        <hr>
-                        <a href="{% url 'pdf_manifiesto' manifiesto.id %}" class="btn btn-outline-dark btn-sm w-100">
-                            🖨️ Descargar Copia PDF
+                {% else %}
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border-l-8 border-amber-500 text-center">
+                        <div class="text-5xl mb-4">🔒</div>
+                        <h5 class="font-black text-amber-600 uppercase tracking-widest text-sm mb-2">Manifiesto Cerrado</h5>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs mb-6 px-4">Este registro ya fue guardado y no permite modificaciones.</p>
+                        <a href="{% url 'pdf_manifiesto' manifiesto.id %}" class="inline-flex items-center space-x-2 bg-slate-800 text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition-all text-sm">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>DESCARGAR PDF</span>
                         </a>
                     </div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="lg:col-span-8">
+            {% if folio %}
+                <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800">
+                    <div class="p-6 border-b border-slate-50 dark:border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0">
+                        <div>
+                            {% if not manifiesto.cerrado %}
+                                <a href="{% url 'cerrar_manifiesto' manifiesto.id %}" 
+                                   class="inline-flex items-center space-x-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-4 py-2 rounded-xl font-bold text-sm hover:bg-emerald-200 transition-all"
+                                   onclick="return confirm('¿Finalizar cargamento? No podrás hacer más cambios.')">
+                                    <i class="fas fa-check-double"></i>
+                                    <span>FINALIZAR Y GENERAR PDF</span>
+                                </a>
+                            {% else %}
+                                <span class="bg-slate-100 dark:bg-slate-800 text-slate-500 px-4 py-2 rounded-xl text-xs font-black tracking-widest">ESTADO: ARCHIVADO</span>
+                            {% endif %}
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] font-black text-slate-400 uppercase block tracking-widest">Valor Total Manifiesto</span>
+                            <span class="text-3xl font-black text-emerald-600 dark:text-emerald-400">${{ total_manifiesto }}</span>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 font-bold uppercase text-[10px]">
+                                <tr>
+                                    <th class="px-6 py-4">Producto</th>
+                                    <th class="px-6 py-4 text-center">Cant.</th>
+                                    <th class="px-6 py-4">Costo U.</th>
+                                    <th class="px-6 py-4 text-right">Subtotal</th>
+                                    {% if not manifiesto.cerrado %}<th class="px-6 py-4 text-center"></th>{% endif %}
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
+                                {% for entrada in entradas %}
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors
+                                    {% if entrada.dias_para_caducar < 15 %} bg-red-50 dark:bg-red-900/10 {% elif entrada.dias_para_caducar < 30 %} bg-amber-50 dark:bg-amber-900/10 {% endif %}">
+                                    <td class="px-6 py-4">
+                                        <div class="font-bold text-slate-800 dark:text-slate-200">{{ entrada.catalogo.nombre }}</div>
+                                        <div class="text-[10px] opacity-60 flex items-center mt-1">
+                                            <i class="fas fa-calendar-alt me-1"></i> Vence: {{ entrada.fecha_caducidad|date:"d/m/Y" }}
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="inline-block bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg font-bold">{{ entrada.unidades }}</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-slate-500">${{ entrada.precio_compra }}</td>
+                                    <td class="px-6 py-4 text-right font-black text-blue-600 dark:text-blue-400">${{ entrada.subtotal }}</td>
+                                    {% if not manifiesto.cerrado %}
+                                    <td class="px-6 py-4 text-center">
+                                        <a href="/eliminar-entrada/{{ entrada.id }}/" class="text-slate-300 hover:text-red-500 transition-colors">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="px-6 py-20 text-center">
+                                        <i class="fas fa-box-open text-5xl text-slate-200 dark:text-slate-800 mb-4 block"></i>
+                                        <p class="text-slate-400 dark:text-slate-600 italic">No hay productos registrados en este folio.</p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-20 shadow-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+                    <div class="w-24 h-24 bg-slate-50 dark:bg-slate-800 rounded-full flex items-center justify-center text-5xl mb-6">🚢</div>
+                    <h4 class="text-2xl font-black text-slate-800 dark:text-white mb-2">Módulo de Recepción</h4>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">Ingresa o crea un folio de manifiesto en el panel izquierdo para comenzar la carga.</p>
                 </div>
             {% endif %}
-        {% endif %}
-    </div>
-
-    <div class="col-md-8">
-        {% if folio %}
-            <div class="d-flex justify-content-between align-items-end mb-3">
-                <div>
-                    <h3 class="mb-0">Folio: <span class="text-primary">{{ folio }}</span></h3>
-                    {% if not manifiesto.cerrado %}
-                        <a href="{% url 'cerrar_manifiesto' manifiesto.id %}" 
-                           class="btn btn-success btn-sm mt-2 fw-bold shadow-sm"
-                           onclick="return confirm('¿Finalizar cargamento? No podrás hacer más cambios.')">
-                            ✅ Finalizar y Guardar PDF
-                        </a>
-                    {% else %}
-                        <span class="badge bg-dark mt-2 p-2">ESTADO: ARCHIVADO</span>
-                    {% endif %}
-                </div>
-                <div class="text-end">
-                    <span class="text-muted d-block small">VALOR TOTAL:</span>
-                    <h2 class="text-success fw-bold">${{ total_manifiesto }}</h2>
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table align-middle bg-white shadow-sm rounded">
-                    <thead class="table-dark">
-                        <tr>
-                            <th style="width: 40%;">Producto</th>
-                            <th class="text-center">Cant.</th>
-                            <th>Costo U.</th>
-                            <th class="text-end">Subtotal</th>
-                            {% if not manifiesto.cerrado %}
-                            <th class="text-center">Borrar</th>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for entrada in entradas %}
-                        <tr {% if entrada.dias_para_caducar < 15 %} class="table-danger" 
-                            {% elif entrada.dias_para_caducar < 30 %} class="table-warning" {% endif %}>
-                            <td>
-                                <div class="fw-bold">{{ entrada.catalogo.nombre }}</div>
-                                <div class="small text-muted">Vence: {{ entrada.fecha_caducidad|date:"d/m/Y" }}</div>
-                            </td>
-                            <td class="text-center">
-                                <span class="badge bg-secondary px-3">{{ entrada.unidades }}</span>
-                            </td>
-                            <td>${{ entrada.precio_compra }}</td>
-                            <td class="text-end fw-bold text-primary">${{ entrada.subtotal }}</td>
-                            {% if not manifiesto.cerrado %}
-                            <td class="text-center">
-                                <a href="/eliminar-entrada/{{ entrada.id }}/" class="btn btn-sm btn-outline-danger">🗑️</a>
-                            </td>
-                            {% endif %}
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="5" class="text-center py-5 text-muted">No hay productos en este folio.</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% else %}
-            <div class="text-center mt-5 p-5 bg-white shadow-sm rounded border">
-                <div class="display-1 text-muted mb-4">🚢</div>
-                <h4>Módulo de Recepción de Mercancía</h4>
-                <p class="text-secondary">Ingresa un folio de manifiesto para comenzar.</p>
-            </div>
-        {% endif %}
+        </div>
     </div>
 </div>
+
 <script>
 document.getElementById('buscador_input').addEventListener('input', function(e) {
     const val = e.target.value;
@@ -171,8 +202,6 @@ document.getElementById('buscador_input').addEventListener('input', function(e) 
             if (val === barcode || val === nombre) {
                 idReal.value = opts[i].getAttribute('data-id');
                 if (val === barcode) e.target.value = nombre;
-                
-                // Salto automático a cantidad
                 inputCantidad.focus();
                 break;
             }
@@ -180,43 +209,25 @@ document.getElementById('buscador_input').addEventListener('input', function(e) 
     }
 });
 
-// NUEVO: Regresar el foco al buscador después de enviar el formulario
 document.getElementById('form-producto').addEventListener('submit', function() {
-    // Usamos un pequeño delay para que Django procese y la página recargue
-    // Si la página recarga sola por el POST, el foco se pierde.
-    // Para asegurar que siempre inicie en el buscador al cargar la página:
     localStorage.setItem('regresar_al_buscador', 'true');
 });
 
 window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pdfId = urlParams.get('descargar_pdf');
+
+    if (pdfId) {
+        const pdfUrl = "{% url 'pdf_manifiesto' 0 %}".replace('0', pdfId);
+        window.open(pdfUrl, '_blank');
+        const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?folio=" + urlParams.get('folio');
+        window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+    }
+    
     if (localStorage.getItem('regresar_al_buscador') === 'true') {
         document.getElementById('buscador_input').focus();
         localStorage.removeItem('regresar_al_buscador');
     }
 };
 </script>
-<script>
-    // Al cargar la página, revisamos si hay una orden de descarga
-    window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const pdfId = urlParams.get('descargar_pdf');
-
-        if (pdfId) {
-            // Abrimos el PDF en una pestaña nueva
-            const pdfUrl = "{% url 'pdf_manifiesto' 0 %}".replace('0', pdfId);
-            window.open(pdfUrl, '_blank');
-            
-            // Limpiamos la URL para que no se descargue cada vez que refresquen
-            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?folio=" + urlParams.get('folio');
-            window.history.replaceState({path: cleanUrl}, '', cleanUrl);
-        }
-        
-        // Mantener tu lógica anterior del buscador...
-        if (localStorage.getItem('regresar_al_buscador') === 'true') {
-            document.getElementById('buscador_input').focus();
-            localStorage.removeItem('regresar_al_buscador');
-        }
-    };
-</script>
-
 {% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4 border-0">
+            <div class="card-header bg-dark text-white">
+                <h5 class="mb-0 small fw-bold">1. FOLIO DE REQUISICIÓN</h5>
+            </div>
+            <div class="card-body">
+                <form method="GET">
+                    <div class="input-group">
+                        <input type="text" name="folio" class="form-control" placeholder="Ej: REQ-101" value="{{ folio|default:'' }}">
+                        <button class="btn btn-info text-white">Cargar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if requisicion %}
+            {% if not requisicion.cerrada %}
+                <div class="card shadow-sm border-0 border-info border-top border-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0 small fw-bold text-info">2. AGREGAR PRODUCTOS</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" id="form-requisicion">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-secondary">Solicitado por:</label>
+                                <input type="text" name="solicitante" class="form-control" placeholder="Área o persona" value="{{ requisicion.solicitante }}" required>
+                            </div>
+                            
+                            <hr class="text-muted">
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold text-info">🔍 BUSCAR PRODUCTO:</label>
+                                <input 
+                                    list="req_list" 
+                                    id="buscador_req" 
+                                    class="form-control border-info" 
+                                    placeholder="Escribe o escanea barras..."
+                                    autocomplete="off"
+                                >
+                                <datalist id="req_list">
+                                    {% for p in catalogo %}
+                                        <option value="{{ p.nombre }}" data-id="{{ p.id }}" data-barcode="{{ p.codigo_barras }}" data-stock="{{ p.stock_real }}">
+                                            Stock: {{ p.stock_real }} | Cod: {{ p.codigo_barras|default:"S/N" }}
+                                        </option>
+                                    {% endfor %}
+                                </datalist>
+                                <input type="hidden" name="producto_id" id="prod_id_real" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Cantidad a surtir:</label>
+                                <input type="number" name="cantidad" id="cant_req" class="form-control" placeholder="0" required>
+                                <div id="aviso_stock" class="form-text mt-1 fw-bold"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info w-100 fw-bold text-white shadow-sm py-2">
+                                <i class="fas fa-plus"></i> Añadir a la Lista
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="card shadow-sm border-0 border-start border-info border-5">
+                    <div class="card-body text-center py-4">
+                        <h1 class="display-6">📄</h1>
+                        <h5 class="fw-bold text-info">REQUISICIÓN COMPLETADA</h5>
+                        <p class="text-muted small">Esta nota ya ha sido cerrada y los productos descontados del stock.</p>
+                        <a href="{% url 'pdf_requisicion' requisicion.id %}" class="btn btn-dark btn-sm w-100">
+                            🖨️ Descargar Nota PDF
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="col-md-8">
+        {% if folio %}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h3 class="mb-0">Nota: <span class="text-info">{{ folio }}</span></h3>
+                    <p class="text-muted mb-0">Solicitante: <strong>{{ requisicion.solicitante|default:"Sin asignar" }}</strong></p>
+                </div>
+                <div>
+                    {% if not requisicion.cerrada %}
+                        <a href="{% url 'cerrar_requisicion' requisicion.id %}" 
+                           class="btn btn-info text-white fw-bold shadow-sm"
+                           onclick="return confirm('¿Finalizar Requisición? Esto descontará los productos del inventario actual.')">
+                            💾 Guardar y Generar PDF
+                        </a>
+                    {% else %}
+                        <span class="badge bg-secondary p-2">ESTADO: SURTIDO</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle bg-white shadow-sm rounded border">
+                    <thead class="table-info">
+                        <tr>
+                            <th style="width: 60%;">Producto</th>
+                            <th class="text-center">Cantidad Solicitada</th>
+                            {% if not requisicion.cerrada %}
+                            <th class="text-center">Acción</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td class="fw-bold">{{ item.catalogo.nombre }}</td>
+                            <td class="text-center">
+                                <span class="badge bg-light text-dark border px-3 py-2" style="font-size: 1rem;">
+                                    {{ item.cantidad }}
+                                </span>
+                            </td>
+                            {% if not requisicion.cerrada %}
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-danger">✕</button>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center py-5 text-muted">
+                                La lista está vacía. Agrega productos desde el panel izquierdo.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="text-center mt-5 p-5 bg-white shadow-sm rounded border">
+                <div class="display-1 text-info mb-4">📝</div>
+                <h4>Módulo de Requisiciones</h4>
+                <p class="text-secondary">Genera notas de salida para surtir pedidos o departamentos.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        // 1. DISPARAR PDF AUTOMÁTICO AL CERRAR
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdfId = urlParams.get('descargar_pdf');
+        if (pdfId) {
+            const pdfUrl = "{% url 'pdf_requisicion' 0 %}".replace('0', pdfId);
+            window.open(pdfUrl, '_blank');
+            // Limpiar URL para evitar descargas infinitas al refrescar
+            const cleanUrl = window.location.origin + window.location.pathname + "?folio=" + urlParams.get('folio');
+            window.history.replaceState({}, '', cleanUrl);
+        }
+
+        // 2. RECUPERAR FOCO TRAS AÑADIR PRODUCTO
+        if (localStorage.getItem('foco_requisicion') === 'true') {
+            document.getElementById('buscador_req').focus();
+            localStorage.removeItem('foco_requisicion');
+        }
+    };
+
+    // 3. LÓGICA DEL BUSCADOR INTELIGENTE
+    document.getElementById('buscador_req').addEventListener('input', function(e) {
+        const val = e.target.value;
+        const opts = document.getElementById('req_list').childNodes;
+        const idInput = document.getElementById('prod_id_real');
+        const cantInput = document.getElementById('cant_req');
+        const aviso = document.getElementById('aviso_stock');
+
+        for (let i = 0; i < opts.length; i++) {
+            if (opts[i].nodeName === 'OPTION') {
+                const barcode = opts[i].getAttribute('data-barcode');
+                const nombre = opts[i].value;
+                const stock = opts[i].getAttribute('data-stock');
+
+                if (val === barcode || val === nombre) {
+                    idInput.value = opts[i].getAttribute('data-id');
+                    
+                    // Si fue escaneo de barras, reemplazar valor por el nombre
+                    if (val === barcode) e.target.value = nombre;
+                    
+                    // Mostrar disponibilidad visual
+                    aviso.innerHTML = `Disponibles en almacén: ${stock}`;
+                    aviso.className = parseInt(stock) > 0 ? "form-text mt-1 fw-bold text-success" : "form-text mt-1 fw-bold text-danger";
+                    
+                    // Salto automático a cantidad
+                    cantInput.focus();
+                    break;
+                }
+            }
+        }
+    });
+
+    // 4. GUARDAR INTENCIÓN DE FOCO AL ENVIAR FORMULARIO
+    document.getElementById('form-requisicion').addEventListener('submit', function() {
+        localStorage.setItem('foco_requisicion', 'true');
+    });
+</script>
+{% endblock %}

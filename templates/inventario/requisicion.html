@@ -1,47 +1,68 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row mt-3">
-    <div class="col-md-4">
-        <div class="card shadow-sm mb-4 border-0">
-            <div class="card-header bg-dark text-white">
-                <h5 class="mb-0 small fw-bold">1. FOLIO DE REQUISICIÓN</h5>
-            </div>
-            <div class="card-body">
-                <form method="GET">
-                    <div class="input-group">
-                        <input type="text" name="folio" class="form-control" placeholder="Ej: REQ-101" value="{{ folio|default:'' }}">
-                        <button class="btn btn-info text-white">Cargar</button>
+<div class="container-fluid px-2 sm:px-4 py-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 space-y-4 md:space-y-0">
+        <div>
+            <h1 class="text-3xl font-black text-slate-800 dark:text-white">Módulo de Requisiciones</h1>
+            <p class="text-slate-500 dark:text-slate-400">Genera notas de salida y surte pedidos.</p>
+        </div>
+        {% if folio %}
+        <div class="bg-cyan-600 px-6 py-3 rounded-2xl shadow-lg shadow-cyan-500/30 text-white">
+            <span class="text-xs uppercase font-bold opacity-80 block">Nota Activa</span>
+            <span class="text-xl font-black">{{ folio }}</span>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-4 space-y-6">
+            
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border border-slate-100 dark:border-slate-800">
+                <div class="flex items-center space-x-2 mb-4">
+                    <div class="bg-cyan-100 dark:bg-cyan-900/30 p-2 rounded-lg text-cyan-600">
+                        <span class="font-bold text-xs">1</span>
                     </div>
+                    <h5 class="font-black text-slate-800 dark:text-slate-200 uppercase text-xs tracking-wider">Folio de Requisición</h5>
+                </div>
+                <form method="GET" class="flex space-x-2">
+                    <input type="text" name="folio" 
+                        class="flex-grow bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white transition-all text-sm" 
+                        placeholder="Ej: REQ-101" value="{{ folio|default:'' }}">
+                    <button class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 rounded-xl font-bold shadow-md shadow-cyan-500/20 active:scale-95 transition-all flex-shrink-0">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
                 </form>
             </div>
-        </div>
 
-        {% if requisicion %}
-            {% if not requisicion.cerrada %}
-                <div class="card shadow-sm border-0 border-info border-top border-4">
-                    <div class="card-header bg-white">
-                        <h5 class="mb-0 small fw-bold text-info">2. AGREGAR PRODUCTOS</h5>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" id="form-requisicion">
+            {% if requisicion %}
+                {% if not requisicion.cerrada %}
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl border-t-4 border-cyan-500">
+                        <div class="flex items-center space-x-2 mb-6">
+                            <div class="bg-cyan-100 dark:bg-cyan-900/30 p-2 rounded-lg text-cyan-600">2</div>
+                            <h5 class="font-black text-slate-800 dark:text-slate-200 uppercase text-xs tracking-wider">Agregar Productos</h5>
+                        </div>
+                        
+                        <form method="POST" id="form-requisicion" class="space-y-4">
                             {% csrf_token %}
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold text-secondary">Solicitado por:</label>
-                                <input type="text" name="solicitante" class="form-control" placeholder="Área o persona" value="{{ requisicion.solicitante }}" required>
-                            </div>
                             
-                            <hr class="text-muted">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase mb-2 ml-1">Solicitado por:</label>
+                                <input type="text" name="solicitante" 
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white transition-all" 
+                                    placeholder="Área o persona" value="{{ requisicion.solicitante }}" required>
+                            </div>
 
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold text-info">🔍 BUSCAR PRODUCTO:</label>
-                                <input 
-                                    list="req_list" 
-                                    id="buscador_req" 
-                                    class="form-control border-info" 
-                                    placeholder="Escribe o escanea barras..."
-                                    autocomplete="off"
-                                >
+                            <hr class="border-slate-100 dark:border-slate-800 my-4">
+
+                            <div>
+                                <label class="block text-xs font-bold text-cyan-600 dark:text-cyan-400 uppercase mb-2 ml-1">
+                                    <i class="fas fa-search me-1"></i> Buscar Producto
+                                </label>
+                                <input list="req_list" id="buscador_req" 
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-2 border-cyan-100 dark:border-slate-700 rounded-xl px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white transition-all" 
+                                    placeholder="Escribe o escanea barras..." autocomplete="off">
                                 <datalist id="req_list">
                                     {% for p in catalogo %}
                                         <option value="{{ p.nombre }}" data-id="{{ p.id }}" data-barcode="{{ p.codigo_barras }}" data-stock="{{ p.stock_real }}">
@@ -52,120 +73,124 @@
                                 <input type="hidden" name="producto_id" id="prod_id_real" required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label small fw-bold">Cantidad a surtir:</label>
-                                <input type="number" name="cantidad" id="cant_req" class="form-control" placeholder="0" required>
-                                <div id="aviso_stock" class="form-text mt-1 fw-bold"></div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 uppercase mb-2 ml-1">Cantidad a surtir</label>
+                                <input type="number" name="cantidad" id="cant_req" 
+                                    class="w-full bg-slate-50 dark:bg-slate-800 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-cyan-500 outline-none dark:text-white" 
+                                    placeholder="0" required>
+                                <div id="aviso_stock" class="text-[10px] mt-2 font-black uppercase tracking-wider"></div>
                             </div>
 
-                            <button type="submit" class="btn btn-info w-100 fw-bold text-white shadow-sm py-2">
-                                <i class="fas fa-plus"></i> Añadir a la Lista
+                            <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-black py-4 rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center space-x-2">
+                                <i class="fas fa-plus"></i>
+                                <span>AÑADIR A LA LISTA</span>
                             </button>
                         </form>
                     </div>
-                </div>
-            {% else %}
-                <div class="card shadow-sm border-0 border-start border-info border-5">
-                    <div class="card-body text-center py-4">
-                        <h1 class="display-6">📄</h1>
-                        <h5 class="fw-bold text-info">REQUISICIÓN COMPLETADA</h5>
-                        <p class="text-muted small">Esta nota ya ha sido cerrada y los productos descontados del stock.</p>
-                        <a href="{% url 'pdf_requisicion' requisicion.id %}" class="btn btn-dark btn-sm w-100">
-                            🖨️ Descargar Nota PDF
+                {% else %}
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 shadow-xl border-l-8 border-cyan-500 text-center">
+                        <div class="text-5xl mb-4 text-cyan-500">📄</div>
+                        <h5 class="font-black text-cyan-600 uppercase tracking-widest text-sm mb-2">Requisición Completada</h5>
+                        <p class="text-slate-500 dark:text-slate-400 text-xs mb-6 px-4">Esta nota ya ha sido cerrada y los productos descontados del stock.</p>
+                        <a href="{% url 'pdf_requisicion' requisicion.id %}" class="inline-flex items-center space-x-2 bg-slate-800 text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition-all text-sm w-full justify-center">
+                            <i class="fas fa-print"></i>
+                            <span>DESCARGAR NOTA PDF</span>
                         </a>
                     </div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div class="lg:col-span-8">
+            {% if folio %}
+                <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl overflow-hidden border border-slate-100 dark:border-slate-800">
+                    <div class="p-6 border-b border-slate-50 dark:border-slate-800 flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 bg-slate-50/50 dark:bg-slate-800/50">
+                        <div>
+                            <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Solicitante</p>
+                            <h4 class="text-xl font-black text-slate-800 dark:text-white">{{ requisicion.solicitante|default:"Sin asignar" }}</h4>
+                        </div>
+                        <div>
+                            {% if not requisicion.cerrada %}
+                                <a href="{% url 'cerrar_requisicion' requisicion.id %}" 
+                                   class="inline-flex items-center space-x-2 bg-cyan-600 text-white px-6 py-3 rounded-xl font-bold text-sm shadow-lg shadow-cyan-500/30 hover:bg-cyan-700 transition-all"
+                                   onclick="return confirm('¿Finalizar Requisición? Esto descontará los productos del inventario actual.')">
+                                    <i class="fas fa-save"></i>
+                                    <span>GUARDAR Y GENERAR PDF</span>
+                                </a>
+                            {% else %}
+                                <span class="bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-black tracking-widest uppercase">ESTADO: SURTIDO</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-cyan-50 dark:bg-cyan-900/20 text-cyan-700 dark:text-cyan-400 font-bold uppercase text-[10px]">
+                                <tr>
+                                    <th class="px-6 py-4 w-2/3">Producto</th>
+                                    <th class="px-6 py-4 text-center">Cantidad Solicitada</th>
+                                    {% if not requisicion.cerrada %}<th class="px-6 py-4 text-center">Acción</th>{% endif %}
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
+                                {% for item in items %}
+                                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                                    <td class="px-6 py-4 font-bold text-slate-800 dark:text-slate-200">
+                                        {{ item.catalogo.nombre }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        <span class="inline-block bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-4 py-2 rounded-xl font-black border border-slate-200 dark:border-slate-700">
+                                            {{ item.cantidad }}
+                                        </span>
+                                    </td>
+                                    {% if not requisicion.cerrada %}
+                                    <td class="px-6 py-4 text-center">
+                                        <button class="text-slate-300 hover:text-red-500 transition-colors">
+                                            <i class="fas fa-times-circle text-lg"></i>
+                                        </button>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="3" class="px-6 py-20 text-center">
+                                        <i class="fas fa-list-ul text-5xl text-slate-200 dark:text-slate-800 mb-4 block"></i>
+                                        <p class="text-slate-400 dark:text-slate-600 italic">La lista está vacía. Agrega productos desde el panel izquierdo.</p>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-20 shadow-xl border-2 border-dashed border-slate-200 dark:border-slate-800 text-center flex flex-col items-center">
+                    <div class="w-24 h-24 bg-cyan-50 dark:bg-cyan-900/20 rounded-full flex items-center justify-center text-5xl mb-6">📝</div>
+                    <h4 class="text-2xl font-black text-slate-800 dark:text-white mb-2">Módulo de Requisiciones</h4>
+                    <p class="text-slate-500 dark:text-slate-400 max-w-xs mx-auto">Ingresa un folio para comenzar a surtir productos del almacén.</p>
                 </div>
             {% endif %}
-        {% endif %}
-    </div>
-
-    <div class="col-md-8">
-        {% if folio %}
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                    <h3 class="mb-0">Nota: <span class="text-info">{{ folio }}</span></h3>
-                    <p class="text-muted mb-0">Solicitante: <strong>{{ requisicion.solicitante|default:"Sin asignar" }}</strong></p>
-                </div>
-                <div>
-                    {% if not requisicion.cerrada %}
-                        <a href="{% url 'cerrar_requisicion' requisicion.id %}" 
-                           class="btn btn-info text-white fw-bold shadow-sm"
-                           onclick="return confirm('¿Finalizar Requisición? Esto descontará los productos del inventario actual.')">
-                            💾 Guardar y Generar PDF
-                        </a>
-                    {% else %}
-                        <span class="badge bg-secondary p-2">ESTADO: SURTIDO</span>
-                    {% endif %}
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table align-middle bg-white shadow-sm rounded border">
-                    <thead class="table-info">
-                        <tr>
-                            <th style="width: 60%;">Producto</th>
-                            <th class="text-center">Cantidad Solicitada</th>
-                            {% if not requisicion.cerrada %}
-                            <th class="text-center">Acción</th>
-                            {% endif %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in items %}
-                        <tr>
-                            <td class="fw-bold">{{ item.catalogo.nombre }}</td>
-                            <td class="text-center">
-                                <span class="badge bg-light text-dark border px-3 py-2" style="font-size: 1rem;">
-                                    {{ item.cantidad }}
-                                </span>
-                            </td>
-                            {% if not requisicion.cerrada %}
-                            <td class="text-center">
-                                <button class="btn btn-sm btn-outline-danger">✕</button>
-                            </td>
-                            {% endif %}
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="3" class="text-center py-5 text-muted">
-                                La lista está vacía. Agrega productos desde el panel izquierdo.
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% else %}
-            <div class="text-center mt-5 p-5 bg-white shadow-sm rounded border">
-                <div class="display-1 text-info mb-4">📝</div>
-                <h4>Módulo de Requisiciones</h4>
-                <p class="text-secondary">Genera notas de salida para surtir pedidos o departamentos.</p>
-            </div>
-        {% endif %}
+        </div>
     </div>
 </div>
 
 <script>
     window.onload = function() {
-        // 1. DISPARAR PDF AUTOMÁTICO AL CERRAR
         const urlParams = new URLSearchParams(window.location.search);
         const pdfId = urlParams.get('descargar_pdf');
         if (pdfId) {
             const pdfUrl = "{% url 'pdf_requisicion' 0 %}".replace('0', pdfId);
             window.open(pdfUrl, '_blank');
-            // Limpiar URL para evitar descargas infinitas al refrescar
             const cleanUrl = window.location.origin + window.location.pathname + "?folio=" + urlParams.get('folio');
             window.history.replaceState({}, '', cleanUrl);
         }
 
-        // 2. RECUPERAR FOCO TRAS AÑADIR PRODUCTO
         if (localStorage.getItem('foco_requisicion') === 'true') {
             document.getElementById('buscador_req').focus();
             localStorage.removeItem('foco_requisicion');
         }
     };
 
-    // 3. LÓGICA DEL BUSCADOR INTELIGENTE
     document.getElementById('buscador_req').addEventListener('input', function(e) {
         const val = e.target.value;
         const opts = document.getElementById('req_list').childNodes;
@@ -181,15 +206,11 @@
 
                 if (val === barcode || val === nombre) {
                     idInput.value = opts[i].getAttribute('data-id');
-                    
-                    // Si fue escaneo de barras, reemplazar valor por el nombre
                     if (val === barcode) e.target.value = nombre;
                     
-                    // Mostrar disponibilidad visual
-                    aviso.innerHTML = `Disponibles en almacén: ${stock}`;
-                    aviso.className = parseInt(stock) > 0 ? "form-text mt-1 fw-bold text-success" : "form-text mt-1 fw-bold text-danger";
+                    aviso.innerHTML = `<i class="fas fa-warehouse me-1"></i> Stock disponible: ${stock}`;
+                    aviso.className = parseInt(stock) > 0 ? "text-[10px] mt-2 font-black uppercase tracking-wider text-emerald-500" : "text-[10px] mt-2 font-black uppercase tracking-wider text-red-500";
                     
-                    // Salto automático a cantidad
                     cantInput.focus();
                     break;
                 }
@@ -197,7 +218,6 @@
         }
     });
 
-    // 4. GUARDAR INTENCIÓN DE FOCO AL ENVIAR FORMULARIO
     document.getElementById('form-requisicion').addEventListener('submit', function() {
         localStorage.setItem('foco_requisicion', 'true');
     });

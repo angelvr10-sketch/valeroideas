@@ -1,78 +1,104 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="w-full bg-gray-50 min-h-screen">
+<div class="container-fluid px-2 sm:px-4 py-4">
     
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 px-2">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
-            <h1 class="text-3xl font-black text-slate-800 tracking-tight">Inventario Maestro</h1>
-            <p class="text-slate-500 font-medium italic">Control total de existencias en tiempo real</p>
+            <h1 class="text-3xl font-black text-slate-800 dark:text-white tracking-tight flex items-center">
+                <i class="fas fa-warehouse text-indigo-500 me-3"></i>Inventario Maestro
+            </h1>
+            <p class="text-slate-500 dark:text-slate-400 font-medium">Control de existencias y estatus de almacén en tiempo real.</p>
         </div>
-        <div class="bg-indigo-600 px-6 py-3 rounded-2xl shadow-lg text-white">
-            <p class="text-[10px] font-bold uppercase opacity-80 tracking-widest text-center">Valor Estimado</p>
-            <h3 class="text-xl font-black">${{ valor_bodega }}</h3>
+        <div class="bg-indigo-600 dark:bg-indigo-500 px-8 py-4 rounded-3xl shadow-xl shadow-indigo-500/20 text-white transition-all hover:scale-105">
+            <p class="text-[10px] font-bold uppercase opacity-80 tracking-widest mb-1 text-center md:text-left">Valorización Total</p>
+            <h3 class="text-2xl font-black">${{ valor_bodega }}</h3>
         </div>
     </div>
 
-    <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 mb-6 flex flex-col md:flex-row gap-4">
+    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 mb-6 flex flex-col md:flex-row gap-4">
         <div class="relative flex-grow">
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
+            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
                 <i class="fas fa-search"></i>
             </span>
-            <input type="text" id="filtro_maestro" placeholder="Buscar por nombre, código o categoría..." 
-                   class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition">
+            <input type="text" id="filtro_maestro" 
+                   placeholder="Buscar por nombre, código de barras o categoría..." 
+                   class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-0 rounded-xl focus:ring-2 focus:ring-indigo-500 dark:text-white outline-none transition">
         </div>
-        <button class="bg-slate-800 text-white px-5 py-2 rounded-xl font-bold hover:bg-slate-700 transition">
-            <i class="fas fa-filter mr-2 text-xs"></i> Filtros
-        </button>
+        <div class="flex gap-2">
+            <button class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-5 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center">
+                <i class="fas fa-filter me-2 text-xs"></i> Filtros
+            </button>
+            <button onclick="window.print()" class="bg-slate-800 dark:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-black transition flex items-center">
+                <i class="fas fa-print me-2 text-xs"></i> Reporte
+            </button>
+        </div>
     </div>
 
-    <div class="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left" id="tabla_productos">
+            <table class="w-full text-left border-collapse" id="tabla_productos">
                 <thead>
-                    <tr class="bg-slate-800 text-white text-[10px] uppercase font-black tracking-widest">
-                        <th class="px-6 py-4">Producto / Detalles</th>
-                        <th class="px-6 py-4 text-center">Stock Real</th>
-                        <th class="px-6 py-4 text-center">Estado</th>
-                        <th class="px-6 py-4 text-right">Acciones</th>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 text-[10px] uppercase font-black tracking-widest border-b border-slate-100 dark:border-slate-800">
+                        <th class="px-6 py-4">Producto / Identificación</th>
+                        <th class="px-6 py-4 text-center">Nivel de Stock</th>
+                        <th class="px-6 py-4 text-center">Estado Crítico</th>
+                        <th class="px-6 py-4 text-right">Gestión</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
                     {% for p in productos %}
-                    <tr class="hover:bg-indigo-50/30 transition-colors fila-producto">
-                        <td class="px-6 py-4">
+                    <tr class="hover:bg-indigo-50/30 dark:hover:bg-indigo-900/10 transition-colors fila-producto">
+                        <td class="px-6 py-6">
                             <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 mr-4">
-                                    <i class="fas fa-box"></i>
+                                <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 dark:text-slate-500 mr-4 border border-slate-200 dark:border-slate-700">
+                                    <i class="fas fa-box text-lg"></i>
                                 </div>
                                 <div>
-                                    <p class="text-sm font-bold text-slate-800">{{ p.nombre }}</p>
-                                    <p class="text-[10px] text-slate-400 font-mono">{{ p.codigo_barras|default:"SIN CÓDIGO" }}</p>
+                                    <p class="text-sm font-black text-slate-800 dark:text-slate-200 uppercase leading-tight">{{ p.nombre }}</p>
+                                    <p class="text-[10px] text-indigo-500 font-mono mt-1 tracking-wider">{{ p.codigo_barras|default:"SIN CÓDIGO" }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-center">
-                            <span class="text-lg font-black {% if p.stock_real <= 5 %}text-red-600{% elif p.stock_real <= 15 %}text-amber-500{% else %}text-emerald-600{% endif %}">
-                                {{ p.stock_real }}
-                            </span>
-                            <span class="text-[10px] text-slate-400 block font-bold uppercase">Unidades</span>
+                        <td class="px-6 py-6 text-center">
+                            <div class="inline-flex flex-col">
+                                <span class="text-2xl font-black {% if p.stock_real <= 5 %}text-red-500{% elif p.stock_real <= 15 %}text-amber-500{% else %}text-emerald-500{% endif %}">
+                                    {{ p.stock_real }}
+                                </span>
+                                <span class="text-[9px] text-slate-400 font-black uppercase tracking-tighter">Unidades en Mano</span>
+                            </div>
                         </td>
-                        <td class="px-6 py-4 text-center">
+                        <td class="px-6 py-6 text-center">
                             {% if p.stock_real <= 5 %}
-                                <span class="bg-red-100 text-red-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Crítico</span>
+                                <span class="inline-flex items-center bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-red-200 dark:border-red-800">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full me-2 animate-pulse"></span> Crítico
+                                </span>
                             {% elif p.stock_real <= 15 %}
-                                <span class="bg-amber-100 text-amber-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Reorden</span>
+                                <span class="inline-flex items-center bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-amber-200 dark:border-amber-800">
+                                    <span class="w-2 h-2 bg-amber-500 rounded-full me-2"></span> Reorden
+                                </span>
                             {% else %}
-                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-black px-3 py-1 rounded-full uppercase">Óptimo</span>
+                                <span class="inline-flex items-center bg-emerald-100 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-emerald-200 dark:border-emerald-800">
+                                    <span class="w-2 h-2 bg-emerald-500 rounded-full me-2"></span> Óptimo
+                                </span>
                             {% endif %}
                         </td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-6 text-right">
                             <div class="flex justify-end space-x-2">
-                                <a href="/admin/inventario/productocatalogo/{{ p.id }}/change/" class="p-2 bg-slate-100 text-slate-600 rounded-lg hover:bg-indigo-600 hover:text-white transition">
-                                    <i class="fas fa-edit text-xs"></i>
+                                <a href="/admin/inventario/productocatalogo/{{ p.id }}/change/" 
+                                   class="p-3 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
+                                   title="Editar Producto">
+                                    <i class="fas fa-pen-to-square"></i>
                                 </a>
                             </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="px-6 py-24 text-center">
+                            <i class="fas fa-search text-6xl text-slate-200 dark:text-slate-800 mb-6 block"></i>
+                            <h3 class="text-xl font-bold text-slate-400">No se encontraron productos</h3>
+                            <p class="text-slate-400 text-sm">Prueba ajustando los filtros o registra nuevos materiales.</p>
                         </td>
                     </tr>
                     {% endfor %}
