@@ -132,8 +132,8 @@ def registrar_salida(request):
         producto = get_object_or_404(ProductoCatalogo, id=prod_id)
         
         # VALIDACIÓN DE STOCK
-        if cantidad > producto.stock_real():
-            messages.error(request, f"Error: Solo hay {producto.stock_real()} unidades de {producto.nombre} disponibles.")
+        if cantidad > producto.stock_real:
+            messages.error(request, f"Error: Solo hay {producto.stock_real} unidades de {producto.nombre} disponibles.")
         else:
             Salida.objects.create(
                 catalogo=producto,
@@ -173,8 +173,8 @@ def modulo_requisicion(request):
                 except ValueError:
                     cant = 0
 
-                if cant > producto.stock_real():
-                    messages.error(request, f"Stock insuficiente. Solo hay {producto.stock_real()} de {producto.nombre}")
+                if cant > producto.stock_real:
+                    messages.error(request, f"Stock insuficiente. Solo hay {producto.stock_real} de {producto.nombre}")
                 elif cant <= 0:
                     messages.error(request, "La cantidad debe ser mayor a 0")
                 else:
@@ -260,7 +260,7 @@ def dashboard(request):
     lista_alertas = [] # Para la sección de "Alertas Prioritarias"
 
     for p in productos:
-        stock = p.stock_real()
+        stock = p.stock_real
         # Calculamos valor (puedes usar el precio del último manifiesto o un campo costo en el modelo)
         # Aquí asumo un valor representativo, ajusta a tu campo de precio si existe
         valor_total += (stock * 10) 
