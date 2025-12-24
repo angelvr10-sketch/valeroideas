@@ -58,13 +58,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # --- BASE DE DATOS (Híbrida: Neon/SQLite) ---
 # En Render, usa la variable de entorno DATABASE_URL. En Termux, usa SQLite.
+# Busca esta parte en tu settings.py y déjala así:
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL', default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"),
+        default=config('DATABASE_URL', default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
         conn_max_age=600,
-        ssl_require=True if config('DATABASE_URL', default=None) else False
+        ssl_require=True if not DEBUG else False # Solo requiere SSL si no estamos en DEBUG
     )
 }
+
 
 # --- VALIDACIÓN DE PASSWORDS ---
 AUTH_PASSWORD_VALIDATORS = [

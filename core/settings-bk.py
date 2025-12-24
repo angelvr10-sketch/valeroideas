@@ -92,13 +92,34 @@ WSGI_APPLICATION = 'core.wsgi.application'
     #    'ENGINE': 'django.db.backends.postgresql', # Forzamos el motor
    # }
 #}
-# PEGA ESTO (Neon - Usa la URL que tienes en Render)
-import dj_database_url
-DATABASES = {
+# Usa esto para cargar el .env solo si existe (local)
+from decouple import config, UndefinedValueError
+
+# Intentar obtener la URL de la base de datos
+try:
+    # Primero busca en el sistema (Render), si no, busca en .env, si no, None
+    DATABASE_URL = config('DATABASE_URL', default=None)
+except Exception:
+    DATABASE_URL = None
+
+if DATABASE_URL:
+    DATABASES = {
         'default': dj_database_url.config(
-        default='postgresql://neondb_owner:npg_t2OFkh4dlIxc@ep-steep-mode-ahiqypj7-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
-    )
-}
+            default=DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+else:
+    # Si no hay URL, usa SQLite automáticamente (Velocidad en Termux)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
 # Mezclamos la configuración de la URL
 #DATABASES['default'].update(db_from_env)
 #DATABASE_URL = os.environ.get('DATABASE_URL')

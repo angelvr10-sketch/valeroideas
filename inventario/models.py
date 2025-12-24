@@ -22,9 +22,14 @@ class ProductoCatalogo(models.Model):
         resultado = self.salida_set.aggregate(Sum('cantidad'))['cantidad__sum']
         return resultado if resultado else 0
 
-    def stock_real(self):
-        # La resta final
-        return self.total_entradas() - self.total_salidas()
+   # Ejemplo de cómo debería quedar para evitar el error
+@property
+def stock_real(self):
+    from django.db.models import Sum
+    # Sumamos entradas y salidas, usando 0 si no hay registros aún
+    entradas = self.movimientos.filter(tipo='entrada').aggregate(Sum('cantidad'))['cantidad__sum'] or 0
+    salidas = self.movimientos.filter(tipo='salida').aggregate(Sum('cantidad'))['cantidad__sum'] or 0
+    return entradas - salidas
 
     def __str__(self):
         return self.nombre
