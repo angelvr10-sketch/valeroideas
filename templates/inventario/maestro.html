@@ -62,18 +62,18 @@
                         </td>
                         <td class="px-6 py-6 text-center">
                             <div class="inline-flex flex-col">
-                                <span class="text-2xl font-black {% if p.stock_real <= 5 %}text-red-500{% elif p.stock_real <= 15 %}text-amber-500{% else %}text-emerald-500{% endif %}">
-                                    {{ p.stock_real }}
+                                <span class="text-2xl font-black {% if p.stock_calc <= 5 %}text-red-500{% elif p.stock_calc <= 15 %}text-amber-500{% else %}text-emerald-500{% endif %}">
+                                    {{ p.stock_calc}}
                                 </span>
                                 <span class="text-[9px] text-slate-400 font-black uppercase tracking-tighter">Unidades en Mano</span>
                             </div>
                         </td>
                         <td class="px-6 py-6 text-center">
-                            {% if p.stock_real <= 5 %}
+                            {% if p.stock_calc <= 5 %}
                                 <span class="inline-flex items-center bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-red-200 dark:border-red-800">
                                     <span class="w-2 h-2 bg-red-500 rounded-full me-2 animate-pulse"></span> Crítico
                                 </span>
-                            {% elif p.stock_real <= 15 %}
+                            {% elif p.stock_calc <= 15 %}
                                 <span class="inline-flex items-center bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-amber-200 dark:border-amber-800">
                                     <span class="w-2 h-2 bg-amber-500 rounded-full me-2"></span> Reorden
                                 </span>

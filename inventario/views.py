@@ -148,12 +148,13 @@ def pdf_requisicion(request, req_id):
     return response
 
 def inventario_maestro(request):
-    # OPTIMIZACIÓN: Calculamos stock en una sola consulta
+    # OPTIMIZACIÓN: La base de datos calcula todo de una sola vez
     productos = ProductoCatalogo.objects.annotate(
         total_e=Coalesce(Sum('productoinventario__unidades'), 0),
         total_s=Coalesce(Sum('salida__cantidad'), 0)
-    ).annotate(stock_calc=F('total_e') - F('total_s'))
+    ).annotate(stock_calc=F('total_e') - F('total_s')).select_related('categoria')
     
+    # Usamos stock_calc para el valor de la bodega
     valor_bodega = sum(p.stock_calc * 10 for p in productos)
     
     return render(request, 'inventario/maestro.html', {
