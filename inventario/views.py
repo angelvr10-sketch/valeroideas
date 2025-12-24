@@ -243,7 +243,7 @@ def pdf_requisicion(request, req_id):
 def inventario_maestro(request):
     productos = ProductoCatalogo.objects.all()
     # Calculamos el valor total de la bodega (opcional)
-    valor_bodega = sum(p.stock_real() * 10 for p in productos) # Ajustar según tu lógica de costo
+    valor_bodega = sum(p.stock_real * 10 for p in productos) # Ajustar según tu lógica de costo
     
     return render(request, 'inventario/maestro.html', {
         'productos': productos,
