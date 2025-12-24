@@ -15,25 +15,32 @@
             <h3 class="text-2xl font-black">${{ valor_bodega }}</h3>
         </div>
     </div>
-
-    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 mb-6 flex flex-col md:flex-row gap-4">
-        <div class="relative flex-grow">
-            <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
-                <i class="fas fa-search"></i>
-            </span>
-            <input type="text" id="filtro_maestro" 
-                   placeholder="Buscar por nombre, código de barras o categoría..." 
-                   class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-0 rounded-xl focus:ring-2 focus:ring-indigo-500 dark:text-white outline-none transition">
-        </div>
-        <div class="flex gap-2">
-            <button class="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-5 py-3 rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center">
-                <i class="fas fa-filter me-2 text-xs"></i> Filtros
-            </button>
-            <button onclick="window.print()" class="bg-slate-800 dark:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold hover:bg-black transition flex items-center">
-                <i class="fas fa-print me-2 text-xs"></i> Reporte
-            </button>
-        </div>
+<div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 mb-6 flex flex-col lg:flex-row gap-4">
+    
+    <div class="relative flex-grow">
+        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+            <i class="fas fa-search"></i>
+        </span>
+        <input type="text" id="filtro_maestro" 
+               placeholder="Buscar producto..." 
+               class="w-full pl-11 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border-0 rounded-xl focus:ring-2 focus:ring-indigo-500 dark:text-white outline-none transition">
     </div>
+
+    <div class="flex flex-wrap gap-2 w-full lg:w-auto">
+        <button class="flex-1 lg:flex-none bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-4 py-3 rounded-xl font-bold hover:bg-slate-200 transition flex items-center justify-center">
+            <i class="fas fa-filter me-2 text-xs"></i> <span class="text-sm">Filtros</span>
+        </button>
+        
+        <a href="{% url 'exportar_excel' %}" class="flex-1 lg:flex-none bg-emerald-600 text-white px-4 py-3 rounded-xl font-bold hover:bg-emerald-700 transition flex items-center justify-center">
+            <i class="fas fa-file-excel me-2 text-xs"></i> <span class="text-sm">Excel</span>
+        </a>
+
+        <button onclick="window.print()" class="flex-1 lg:flex-none bg-slate-800 text-white px-4 py-3 rounded-xl font-bold hover:bg-black transition flex items-center justify-center">
+            <i class="fas fa-print me-2 text-xs"></i> <span class="text-sm">Reporte</span>
+        </button>
+    </div>
+</div>
+
 
     <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 overflow-hidden">
         <div class="overflow-x-auto">

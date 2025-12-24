@@ -30,5 +30,7 @@ path('cerrar-requisicion/<int:req_id>/', views.cerrar_requisicion, name='cerrar_
 path('pdf-requisicion/<int:req_id>/', views.pdf_requisicion, name='pdf_requisicion'),
 path('maestro/', views.inventario_maestro, name='inventario_maestro'),
 path('', views.dashboard, name='dashboard'),
+path('exportar/excel/', views.exportar_inventario_excel, name='exportar_excel'),
+
 
 ]

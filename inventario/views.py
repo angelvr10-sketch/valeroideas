@@ -11,6 +11,8 @@ from django.db.models import Sum, Count, Q, F
 from django.db.models.functions import Coalesce
 from django.utils import timezone
 from django.contrib import messages
+import openpyxl
+from django.http import HttpResponse
 
 @csrf_protect
 def recibir_manifiesto(request):
@@ -201,4 +203,37 @@ def dashboard(request):
         'req_hoy': req_hoy,
         'salidas_hoy': salidas_hoy,
         'alertas_lista': lista_alertas[:6],
-    })
+      })
+    
+def exportar_inventario_excel(request):
+    # Usamos la misma consulta optimizada
+    productos = ProductoCatalogo.objects.annotate(
+        total_e=Coalesce(Sum('productoinventario__unidades'), 0),
+        total_s=Coalesce(Sum('salida__cantidad'), 0)
+    ).annotate(stock_calc=F('total_e') - F('total_s')).select_related('categoria')
+
+    # Crear el libro de Excel
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Inventario Maestro"
+
+    # Encabezados
+    headers = ['Código de Barras', 'Producto', 'Categoría', 'Stock Actual', 'Estado']
+    ws.append(headers)
+
+    # Datos
+    for p in productos:
+        estado = "Crítico" if p.stock_calc <= 5 else "Reorden" if p.stock_calc <= 15 else "Óptimo"
+        ws.append([
+            p.codigo_barras or "SIN CÓDIGO",
+            p.nombre,
+            p.categoria.nombre,
+            p.stock_calc,
+            estado
+        ])
+
+    # Preparar la respuesta del navegador
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="Inventario_Maestro.xlsx"'
+    wb.save(response)
+    return response
